@@ -1,6 +1,7 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
+import axios from "axios";
 
 function SignUp({ errors, touched, isSubmitting }) {
   // const {} = values;
@@ -80,6 +81,7 @@ const FormikSignUp = withFormik({
     location: yup.string().required("Please enter a city or zip")
   }),
   handleSubmit(values, { resetForm, setSubmitting }) {
+    console.log(values);
     setTimeout(() => {
       resetForm();
       setSubmitting(false);
