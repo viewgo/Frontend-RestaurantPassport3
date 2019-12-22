@@ -83,8 +83,14 @@ const FormikSignUp = withFormik({
   handleSubmit(values, { resetForm, setSubmitting }) {
     console.log(values);
     setTimeout(() => {
-      resetForm();
-      setSubmitting(false);
+      axios
+        .post("api")
+        .then(res => {
+          console.log(res);
+          setSubmitting(false);
+        })
+        .catch(err => console.log(err))
+        .finally(resetForm());
     }, 1000);
   }
 })(SignUp);

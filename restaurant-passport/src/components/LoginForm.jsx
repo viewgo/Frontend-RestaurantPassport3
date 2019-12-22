@@ -1,41 +1,71 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 
-function Login({ errors, touched, isSubmitting }) {
+function Login({ errors, touched, values, isSubmitting }) {
   // const {} = values;
+  console.log("values", values);
   return (
     <>
       <Form>
-        {touched.email && errors.email && (
-          <p className="error">{errors.email}</p>
-        )}
-        <label>
+        <label name="email">
           {" "}
+          {touched.email && errors.email && (
+            <p className="error">{errors.email}</p>
+          )}
           Email :
-          <Field name="email" placeholder="Email" type="email" />
+          <Field
+            name="email"
+            placeholder="Email"
+            type="email"
+            value={values.email || ""}
+          />
         </label>
-        {touched.password && errors.password && (
-          <p className="error">{errors.password}</p>
-        )}
-        <label>
+        <label name="password">
+          {touched.password && errors.password && (
+            <p className="error">{errors.password}</p>
+          )}
           Password:
-          <Field name="password" placeholder="Password" type="password" />
+          <Field
+            name="password"
+            placeholder="Password"
+            type="password"
+            value={values.password || ""}
+          />
         </label>
-        <button name="submitBtn" type="submit" disabled={isSubmitting}>
-          {!isSubmitting ? "Log In" : "Logging In"}
-        </button>
+        <label name="rememberMe">
+          Remember Me:
+          <Field
+            name="remember"
+            type="checkbox"
+            placeholder={JSON.stringify(values.remember) || "false"}
+          />
+        </label>
+        <label name="submitButton">
+          <button name="submitBtn" type="submit" disabled={isSubmitting}>
+            {!isSubmitting ? "Log In" : "Logging In"}
+          </button>
+        </label>
       </Form>
     </>
   );
 }
 
 const FormikLogin = withFormik({
-  mapPropsToValues({ email, password }) {
+  mapPropsToValues({
+    remember,
+    email,
+    password,
+    setLocalStorage,
+    getLocalStorage
+  }) {
     return {
-      email: email || "",
-      password: password || ""
+      remember: remember || false,
+      email: email,
+      password: password,
+      setStorage: setLocalStorage,
+      getStorage: getLocalStorage
     };
   },
 
@@ -48,10 +78,38 @@ const FormikLogin = withFormik({
     password: yup
       .string()
       .min(6, "Password is at least 6 characters")
-      .required("Password Required")
+      .required("Password Required"),
+    remember: yup.boolean().required()
   }),
   handleSubmit(values, { resetForm, setSubmitting }) {
-    console.log(values);
+    console.log("values", values);
+    // * SET LOCAL STORAGE BASED ON REMEMBER email and password changes
+
+    if (
+      values.remember === true &&
+      (!localStorage.passportRemember ||
+        values.getStorage("passportRemember") === false)
+    ) {
+      values.setStorage("passportRemember", true);
+      values.setStorage("passportEmail", values.email);
+      values.setStorage("passportPassword", values.password);
+      console.log("Set initial storage", localStorage);
+    } else if (
+      values.remember === true &&
+      (values.getStorage("passportEmail") !== values.email ||
+        values.getStorage("passportPassword") !== values.password)
+    ) {
+      console.log("changed Storage");
+      values.setStorage("passportRemember", true);
+      values.setStorage("passportEmail", values.email);
+      values.setStorage("passportPassword", values.password);
+    } else if (values.remember === false) {
+      console.log("Remove Storage");
+      values.setStorage("passportRemember", false);
+      values.setStorage("passportEmail", "");
+      values.setStorage("passportPassword", "");
+    }
+
     setTimeout(() => {
       axios
         .post("http://api", values)
@@ -64,5 +122,4 @@ const FormikLogin = withFormik({
     }, 1000);
   }
 })(Login);
-
 export default FormikLogin;
