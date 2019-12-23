@@ -4,13 +4,38 @@ import { Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import SignUpForm from "./components/SignUpForm";
 import LoginForm from "./components/LoginForm";
+import PassportForm from "./components/PassportForm";
 
 class App extends React.Component {
   //todo add state for storing registered people based on local storage changes of username, remove duplicate based on username change and if the password was the same.
   state = {
     rememberMe: "",
     rememberEmail: "",
-    rememberPassword: ""
+    rememberPassword: "",
+    users: [
+      {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      location: "",
+      remember: ""
+      }
+    ],
+    restaurants: [
+      {
+        date: "",
+        name: "",
+        address: "",
+        city: "",
+        zip: "",
+        number: "",
+        website: "",
+        rating: "",
+        notes: "",
+        stamped: ""
+      }
+    ]
   };
   componentWillMount() {
     // console.log("storage", localStorage);
@@ -60,8 +85,24 @@ class App extends React.Component {
             password={this.state.rememberPassword}
           />
         </Route>
+        <Route path="/passport-form">
+          {/*//! fix prop here  */}
+          <PassportForm 
+          date={this.state.restaurants[0].date} 
+          name={this.state.restaurants[0].name} address={this.state.restaurants[0].address} 
+          city={this.state.restaurants[0].city} 
+          zip={this.state.restaurants[0].zip} 
+          number={this.state.restaurants[0].number} 
+          website={this.state.restaurants[0].website} 
+          rating={this.state.restaurants[0].rating}
+          notes={this.state.restaurants[0].notes}
+          stamped={this.state.restaurants[0].stamped} />
+        </Route>
       </div>
     );
   }
 }
+
 export default App;
+
+// date, name, address, city, zip, number, website, rating, notes stamped
