@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 
 function Login({ errors, touched, values, isSubmitting }) {
   // const {} = values;
-  console.log("values", values);
+  //   console.log("values", values);
   return (
     <>
       <Form>
@@ -82,7 +82,7 @@ const FormikLogin = withFormik({
     remember: yup.boolean().required()
   }),
   handleSubmit(values, { resetForm, setSubmitting }) {
-    console.log("values", values);
+    console.log("SubmitValues", values);
     // * SET LOCAL STORAGE BASED ON REMEMBER email and password changes
 
     if (
@@ -103,6 +103,7 @@ const FormikLogin = withFormik({
       values.setStorage("passportRemember", true);
       values.setStorage("passportEmail", values.email);
       values.setStorage("passportPassword", values.password);
+      
     } else if (values.remember === false) {
       console.log("Remove Storage");
       values.setStorage("passportRemember", false);
@@ -112,7 +113,7 @@ const FormikLogin = withFormik({
 
     setTimeout(() => {
       axios
-        .post("http://api", values)
+        .post("https://reqres.in/api/users", values)
         .then(res => {
           console.log(res);
           setSubmitting(false);

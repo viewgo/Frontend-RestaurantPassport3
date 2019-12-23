@@ -6,14 +6,14 @@ import SignUpForm from "./components/SignUpForm";
 import LoginForm from "./components/LoginForm";
 
 class App extends React.Component {
-  //todo add state for storing registered people based on local storage changes of username, remove duplicate based on username change and if the password was the same
+  //todo add state for storing registered people based on local storage changes of username, remove duplicate based on username change and if the password was the same.
   state = {
     rememberMe: "",
     rememberEmail: "",
     rememberPassword: ""
   };
   componentWillMount() {
-    console.log("storage", localStorage);
+    // console.log("storage", localStorage);
     this.setState({
       rememberMe: this.localStorageGet("passportRemember") || false,
       rememberEmail: this.localStorageGet("passportEmail") || "",
@@ -46,7 +46,10 @@ class App extends React.Component {
           <Navigation />
         </Route>
         <Route path="/signup">
-          <SignUpForm />
+          <SignUpForm
+            setLocalStorage={this.localStorageSet}
+            getLocalStorage={this.localStorageGet}
+          />
         </Route>
         <Route path="/login">
           <LoginForm

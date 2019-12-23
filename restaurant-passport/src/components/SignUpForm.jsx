@@ -5,22 +5,23 @@ import axios from "axios";
 
 function SignUp({ errors, touched, isSubmitting }) {
   // const {} = values;
+  console.log(errors);
   return (
     <>
       <Form>
-        {touched.fName && errors.fName && (
-          <p className="error">{errors.fName}</p>
+        {touched.firstName && errors.firstName && (
+          <p className="error">{errors.firstName}</p>
         )}
-        <label>
+        <label name="FirstName">
           First Name:
-          <Field name="fName" placeholder="First Name" type="text" />
+          <Field name="firstName" placeholder="First Name" type="text" />
         </label>
-        {touched.lName && errors.lName && (
-          <p className="error">{errors.lName}</p>
+        {touched.lastName && errors.lastName && (
+          <p className="error">{errors.lastName}</p>
         )}
         <label>
           Last Name:
-          <Field name="lName" placeholder="Last Name" type="text" />
+          <Field name="lastName" placeholder="Last Name" type="text" />
         </label>
         {touched.email && errors.email && (
           <p className="error">{errors.email}</p>
@@ -44,31 +45,34 @@ function SignUp({ errors, touched, isSubmitting }) {
           Location:
           <Field name="location" placeholder="City/Zip" type="text" />
         </label>
-        <button name="submitBtn" type="submit" disabled={isSubmitting}>
-          {!isSubmitting ? "Sign Up" : "Processing"}
-        </button>
+        <label name="rememberMe">
+          Remember Me:
+          <Field name="remember" type="checkbox" placeholder="false" />
+        </label>
+        <label name="submitButton">
+          <button name="submitBtn" type="submit" disabled={isSubmitting}>
+            {!isSubmitting ? "Sign Up" : "Processing"}
+          </button>
+        </label>
       </Form>
     </>
   );
 }
 
 const FormikSignUp = withFormik({
-  mapPropsToValues({ fName, lName, email, password, location }) {
+  mapPropsToValues({ setLocalStorage, getLocalStorage }) {
     return {
-      firstName: fName || "",
-      lastName: lName || "",
-      email: email || "",
-      password: password || "",
-      location: location || ""
+      setStorage: setLocalStorage,
+      getStorage: getLocalStorage
     };
   },
 
   validationSchema: yup.object().shape({
-    fName: yup
+    firstName: yup
       .string()
       .min(3, "Too Short")
       .required("Name Required"),
-    lName: yup.string().min(3, "Too Short"),
+    lastName: yup.string().min(3, "Too Short"),
     email: yup
       .string()
       .min(6)
@@ -81,10 +85,20 @@ const FormikSignUp = withFormik({
     location: yup.string().required("Please enter a city or zip")
   }),
   handleSubmit(values, { resetForm, setSubmitting }) {
-    console.log(values);
+    console.log("SubmitValues", values);
+    if (
+      values.remember === true &&
+      (!localStorage.passportRemember ||
+        values.getStorage("passportRemember") === false)
+    ) {
+      values.setStorage("passportRemember", true);
+      values.setStorage("passportEmail", values.email);
+      values.setStorage("passportPassword", values.password);
+      console.log("SignUp storage", localStorage);
+    }
     setTimeout(() => {
       axios
-        .post("api")
+        .post("https://reqres.in/api/users", values)
         .then(res => {
           console.log(res);
           setSubmitting(false);
