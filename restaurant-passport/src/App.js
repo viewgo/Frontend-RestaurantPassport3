@@ -5,35 +5,41 @@ import Navigation from "./components/Navigation";
 import SignUpForm from "./components/SignUpForm";
 import LoginForm from "./components/LoginForm";
 import PassportForm from "./components/PassportForm";
+import Passport from "./components/Passport";
 
 class App extends React.Component {
   //todo add state for storing registered people based on local storage changes of username, remove duplicate based on username change and if the password was the same.
+
+  // todo BUY VICKS BEFORE PARTY!!!
+  //!  BLUELIGHT GLASSES
+
   state = {
     rememberMe: "",
     rememberEmail: "",
     rememberPassword: "",
     users: [
       {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      location: "",
-      remember: ""
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        location: "",
+        remember: ""
       }
     ],
-    restaurants: [
+    passport: [
       {
-        date: "",
-        name: "",
-        address: "",
-        city: "",
-        zip: "",
-        number: "",
-        website: "",
-        rating: "",
-        notes: "",
-        stamped: ""
+        date: "12/25/19",
+        name: "Teals Seafood Market",
+        address: "OPeeDee River Way",
+        city: "Cheraw",
+        zip: "094234",
+        number: "801-489-4729",
+        website: "www.none.com",
+        rating: "5",
+        notes: "Best teal burger you will ever find",
+        stamped: "true",
+        flipped: false
       }
     ]
   };
@@ -52,6 +58,14 @@ class App extends React.Component {
   localStorageSet = (item, value) => {
     // console.log("localStorageSet", item, value);
     localStorage.setItem(item, JSON.stringify(value));
+  };
+
+  setFlipped = e => {
+    // console.log(this.state.passport[0]);
+    // this.setState(...{
+    // });
+    // console.log(e.target);
+    console.log(this.state);
   };
 
   //   componentDidMount() {
@@ -87,16 +101,24 @@ class App extends React.Component {
         </Route>
         <Route path="/passport-form">
           {/*//! fix prop here  */}
-          <PassportForm 
-          date={this.state.restaurants[0].date} 
-          name={this.state.restaurants[0].name} address={this.state.restaurants[0].address} 
-          city={this.state.restaurants[0].city} 
-          zip={this.state.restaurants[0].zip} 
-          number={this.state.restaurants[0].number} 
-          website={this.state.restaurants[0].website} 
-          rating={this.state.restaurants[0].rating}
-          notes={this.state.restaurants[0].notes}
-          stamped={this.state.restaurants[0].stamped} />
+          <PassportForm
+            date={this.state.passport[0].date}
+            name={this.state.passport[0].name}
+            address={this.state.passport[0].address}
+            city={this.state.passport[0].city}
+            zip={this.state.passport[0].zip}
+            number={this.state.passport[0].number}
+            website={this.state.passport[0].website}
+            rating={this.state.passport[0].rating}
+            notes={this.state.passport[0].notes}
+            stamped={this.state.passport[0].stamped}
+          />
+        </Route>
+        <Route path="/passport">
+          <Passport
+            passport={this.state.passport}
+            setFlipped={this.setFlipped}
+          />
         </Route>
       </div>
     );

@@ -150,14 +150,13 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
 
 const FormikPassportForm = withFormik({
   mapPropstoValues(props) {
-    console.log("MAPVALUES");
     return {
-      date: props.restaurant.date || Date(),
-      name: props.restaurant.name || "",
-      address: props.restaurant.website || "",
-      rating: props.restaurant.rating || "value",
-      notes: props.restaurant.notes || "",
-      stamped: props.restaurant.stamped || false
+      date: props.passport.date || Date(),
+      name: props.passport.name || "",
+      address: props.passport.website || "",
+      rating: props.passport.rating || "value",
+      notes: props.passport.notes || "",
+      stamped: props.passport.stamped || false
     };
   },
 
