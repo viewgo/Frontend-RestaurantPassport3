@@ -43,6 +43,7 @@ class App extends React.Component {
       }
     ]
   };
+
   componentWillMount() {
     // console.log("storage", localStorage);
     this.setState({
