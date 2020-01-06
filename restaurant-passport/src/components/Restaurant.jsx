@@ -1,7 +1,7 @@
 import React from "react";
 
 function Restaurant({ restaurant, setFlipped }) {
-  console.log(restaurant);
+  console.log("rest", restaurant);
   if (restaurant.flipped === false) {
     return (
       <>
@@ -23,11 +23,14 @@ function Restaurant({ restaurant, setFlipped }) {
         <div className="restaurant-card-back">
           <h3>Name: {restaurant.name}</h3>
           <p>Date: {restaurant.date} </p>
-          <p>Address {restaurant.address}</p>
-          <p>City {restaurant.city}</p>
-          <p>Zip {restaurant.zip}</p>
-          <p>Number {restaurant.number}</p>
-          <p>Website {restaurant.website}</p>
+          <p>
+            Address: {restaurant.address} {restaurant.city}, {restaurant.state}{" "}
+            {restaurant.zipcode}
+          </p>
+          <p>Number: {restaurant.phone_number}</p>
+          <p>
+            <a href={restaurant.website_url}>Website</a>
+          </p>
           <p>Rating: {restaurant.rating}</p>
           <p>Notes: {restaurant.notes}</p>
           <p>Stamped: {restaurant.stamped}</p>

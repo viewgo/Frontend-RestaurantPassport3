@@ -2,6 +2,7 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import axios from "axios";
+import axiosWithAuth from "../utils/index";
 
 function PassportForm({ values, errors, touched, isSubmitting }) {
   console.log("values", values);
@@ -60,6 +61,19 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
             value={values.city || ""}
           />
         </label>
+        <label name="state">
+          {" "}
+          {touched.state && errors.state && (
+            <p className="error">{errors.state}</p>
+          )}
+          State:
+          <Field
+            name="state"
+            placeholder="state"
+            type="text"
+            value={values.state || ""}
+          />
+        </label>
         <label name="zip">
           {" "}
           {touched.zip && errors.zip && <p className="error">{errors.zip}</p>}
@@ -110,7 +124,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
             name="rating"
             placeholder=""
             type="text"
-            value={values.rating || "value"}
+            value={values.rating || ""}
           />
         </label>
         <label name="note">
@@ -151,12 +165,12 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
 const FormikPassportForm = withFormik({
   mapPropstoValues(props) {
     return {
-      date: props.passport.date || Date(),
-      name: props.passport.name || "",
-      address: props.passport.website || "",
-      rating: props.passport.rating || "value",
-      notes: props.passport.notes || "",
-      stamped: props.passport.stamped || false
+      date: Date(),
+      name: "",
+      address: "",
+      rating: "",
+      notes: "",
+      stamped: false
     };
   },
 
@@ -167,20 +181,61 @@ const FormikPassportForm = withFormik({
       .required(),
     address: yup.string(),
     city: yup.string().required(),
+    state: yup.string().required(),
     zip: yup.string().required(),
     number: yup.string(),
     website: yup.string(),
     rating: yup.string(),
     notes: yup.string(),
-    stamped: yup.boolean().required()
+    stamped: yup.boolean()
   }),
+
   handleSubmit(values, { resetForm, setSubmitting }) {
     console.log("SubmitValues", values);
+    const newRestaurant = {
+      id: Date.now(),
+      name: values.name,
+      address: values.address,
+      city: values.city,
+      state: values.state,
+      zipcode: values.zip,
+      phone_number: values.number,
+      website_url: values.website,
+      img_url: "null"
+    };
+    const newRestaurantId = {
+      restaurant_id: newRestaurant.id
+    };
+    const restaurantPut = {
+      restaurant_id: newRestaurant.id,
+      notes: newRestaurant.note,
+      stamped: newRestaurant.stamped,
+      rating: newRestaurant.rating
+    };
     setTimeout(() => {
+      console.log(newRestaurant);
       axios
-        .post("https://reqres.in/api/users", values)
-        .then(res => console.log(res),
-         setSubmitting(false))
+        .post("https://rpass.herokuapp.com/api/restaurants", newRestaurant)
+        .then(res => {
+          console.log("post", res);
+          setSubmitting(false);
+          axiosWithAuth()
+            .post(
+              `https://rpass.herokuapp.com/api/users/3/passport`,
+              newRestaurantId
+            )
+            .then(res => {
+              console.log("newTestPost", res);
+              axiosWithAuth()
+                .put(
+                  `https://rpass.herokuapp.com/api/users/3/passport`,
+                  restaurantPut
+                )
+                .then(res => console.log("newTestPut", res))
+                .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+        })
         .catch(err => console.log("Error", err))
         .finally(resetForm());
     }, 500);
