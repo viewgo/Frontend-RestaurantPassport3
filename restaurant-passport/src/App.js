@@ -10,8 +10,6 @@ import Passport from "./components/Passport";
 class App extends React.Component {
   //todo add state for storing registered people based on local storage changes of username, remove duplicate based on username change and if the password was the same.
 
-  // todo BUY VICKS BEFORE PARTY!!!
-  //!  BLUELIGHT GLASSES
 
   state = {
     rememberMe: "",
