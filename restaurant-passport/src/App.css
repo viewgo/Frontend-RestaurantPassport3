@@ -6,6 +6,47 @@
       justify-content: space-around;
 }
 
+.login-form {
+  border: 2px dotted black;
+  width: 30%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.login-form .login-label-email {
+  border: 1px solid green;
+  width: 100%;
+  margin: 20px 10px;
+}
+
+.login-form .login-label-password {
+  border: 1px solid lawngreen;
+  width: 100%;
+  margin: 10px 10px;
+}
+
+.login-form .login-label-remember {
+  border: 1px solid red;
+  width: 100%;
+  margin: 10px 10px;
+}
+
+.login-form .login-submitBtn {
+  border: 1px soild blue;
+  width: 30%;
+  color: green;
+  background: lightblue;
+  margin: 10px 10px;
+}
+
 .error {
   color: red;
 }

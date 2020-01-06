@@ -2,17 +2,14 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 
-import axiosWithAuth from "../utils"
+import axiosWithAuth from "../utils";
 
 function Login({ errors, touched, values, isSubmitting }) {
-  
-
-  console.log("values", values);
-
+  // console.log("values", values);
   return (
-    <>
+    <div className="login-form">
       <Form>
-        <label name="email">
+        <label name="email" className="login-label-email">
           {" "}
           {touched.email && errors.email && (
             <p className="error">{errors.email}</p>
@@ -25,7 +22,7 @@ function Login({ errors, touched, values, isSubmitting }) {
             value={values.email || ""}
           />
         </label>
-        <label name="password">
+        <label name="password" className="login-label-password">
           {touched.password && errors.password && (
             <p className="error">{errors.password}</p>
           )}
@@ -37,7 +34,7 @@ function Login({ errors, touched, values, isSubmitting }) {
             value={values.password || ""}
           />
         </label>
-        <label name="rememberMe">
+        <label name="rememberMe" className="login-label-remember">
           Remember Me:
           <Field
             name="remember"
@@ -45,13 +42,18 @@ function Login({ errors, touched, values, isSubmitting }) {
             placeholder={JSON.stringify(values.remember) || "false"}
           />
         </label>
-        <label name="submitButton">
-          <button name="submitBtn" type="submit" disabled={isSubmitting}>
-            {!isSubmitting ? "Log In" : "Logging In"}
-          </button>
-        </label>
+        {/* <label name="submitButton"> */}
+        <button
+          name="submitBtn"
+          type="submit"
+          disabled={isSubmitting}
+          className="login-submitBtn"
+        >
+          {!isSubmitting ? "Log In" : "Logging In"}
+        </button>
+        {/* </label> */}
       </Form>
-    </>
+    </div>
   );
 }
 
@@ -61,7 +63,7 @@ const FormikLogin = withFormik({
     email,
     password,
     setLocalStorage,
-    getLocalStorage,
+    getLocalStorage
     // credentials
   }) {
     return {
@@ -69,7 +71,7 @@ const FormikLogin = withFormik({
       email: email,
       password: password,
       setStorage: setLocalStorage,
-      getStorage: getLocalStorage,
+      getStorage: getLocalStorage
       // credentials: credentials
     };
   },
@@ -95,7 +97,7 @@ const FormikLogin = withFormik({
       username: values.email,
       password: values.password
     };
-  
+
     // console.log("credentials", credentials);
 
     if (
@@ -116,7 +118,6 @@ const FormikLogin = withFormik({
       values.setStorage("passportRemember", true);
       values.setStorage("passportEmail", values.email);
       values.setStorage("passportPassword", values.password);
-      
     } else if (values.remember === false) {
       console.log("Remove Storage");
       values.setStorage("passportRemember", false);
@@ -129,7 +130,7 @@ const FormikLogin = withFormik({
         .post("/auth/login", credentials)
         .then(res => {
           console.log(res);
-          localStorage.setItem('token', res.data.token);
+          localStorage.setItem("token", res.data.token);
           setSubmitting(false);
         })
         .catch(res => console.log(res))
