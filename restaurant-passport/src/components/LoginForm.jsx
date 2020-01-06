@@ -128,7 +128,7 @@ const FormikLogin = withFormik({
       axiosWithAuth()
         .post("/auth/login", credentials)
         .then(res => {
-          console.log(res);
+          console.log("Login res", res);
           localStorage.setItem('token', res.data.token);
           setSubmitting(false);
         })

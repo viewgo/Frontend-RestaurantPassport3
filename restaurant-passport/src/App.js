@@ -117,14 +117,8 @@ class App extends React.Component {
             stamped={this.state.passport[0].stamped}
           />
         </Route>
-        {/* <Route path="/passport">
-          <Passport
-            passport={this.state.passport}
-            setFlipped={this.setFlipped}
-          />
-        </Route> */}
-        <PrivateRoute path="/passport" component={Passport}/>
-
+        <PrivateRoute exact path="/passport" component={Passport} passport={this.state.passport} setFlipped={this.setFlipped} />
+        
       </div>
     );
   }
