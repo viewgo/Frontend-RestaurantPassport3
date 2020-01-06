@@ -1,15 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 import { Route } from "react-router-dom";
 
-import PrivateRoute from "./components/PrivateRoute"
+import PrivateRoute from "./components/PrivateRoute";
 import Navigation from "./components/Navigation";
 import SignUpForm from "./components/SignUpForm";
 import LoginForm from "./components/LoginForm";
 import PassportForm from "./components/PassportForm";
 import Passport from "./components/Passport";
+import Explore from "./components/Explore";
 
-class App extends React.Component {
+class App extends Component {
   //todo add state for storing registered people based on local storage changes of username, remove duplicate based on username change and if the password was the same.
 
   state = {
@@ -121,8 +122,10 @@ class App extends React.Component {
             setFlipped={this.setFlipped}
           />
         </Route> */}
-        <PrivateRoute path="/passport" component={Passport}/>
-
+        <Route path="/explore">
+          <Explore />
+        </Route>
+        <PrivateRoute path="/passport" component={Passport} />
       </div>
     );
   }
