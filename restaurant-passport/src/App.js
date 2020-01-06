@@ -137,16 +137,11 @@ class App extends Component {
           // stamped={this.state.passport[0].stamped}
           />
         </Route>
-        {/* <Route path="/passport">
-          <Passport
-            passport={this.state.passport}
-            setFlipped={this.setFlipped}
-          />
-        </Route> */}
-        <Route path="/explore">
+        <PrivateRoute exact path="/passport" component={Passport} passport={this.state.passport} setFlipped={this.setFlipped} />
+        <PrivateRoute exact path="/explore" component={Explore} add={this.addToPassport} />
+        {/* <Route path="/explore">
           <Explore add={this.addToPassport} />
-        </Route>
-        <PrivateRoute path="/passport" component={Passport} />
+        </Route> */}
       </div>
     );
   }
