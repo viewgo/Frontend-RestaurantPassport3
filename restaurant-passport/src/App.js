@@ -117,7 +117,7 @@ class App extends Component {
           />
         </Route>
         <PrivateRoute exact path="/passport" component={Passport} passport={this.state.passport} setFlipped={this.setFlipped} />
-        
+        <PrivateRoute exact path="/explore" component={Explore} />
       </div>
     );
   }

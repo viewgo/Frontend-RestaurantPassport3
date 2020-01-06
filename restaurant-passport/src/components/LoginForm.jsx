@@ -4,7 +4,7 @@ import * as yup from "yup";
 
 import axiosWithAuth from "../utils"
 
-function Login({ errors, touched, values, isSubmitting }) {
+function Login( { errors, touched, values, isSubmitting } ) {
   
 
   console.log("values", values);
@@ -131,6 +131,8 @@ const FormikLogin = withFormik({
           console.log("Login res", res);
           localStorage.setItem('token', res.data.token);
           setSubmitting(false);
+          // console.log(history)
+          res.history.push('/passport');
         })
         .catch(res => console.log(res))
         .finally(resetForm());
