@@ -130,6 +130,7 @@ const FormikLogin = withFormik({
         .then(res => {
           console.log("Login res", res);
           localStorage.setItem('token', res.data.token);
+          localStorage.setItem('user_id', res.data.user_id)
           setSubmitting(false);
           // console.log(history)
           res.history.push('/passport');
