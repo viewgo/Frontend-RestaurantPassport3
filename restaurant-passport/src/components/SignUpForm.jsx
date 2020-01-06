@@ -1,11 +1,13 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
-import axios from "axios";
+
+import axiosWithAuth from "../utils"
+
 
 function SignUp({ errors, touched, isSubmitting }) {
   // const {} = values;
-  console.log(errors);
+  // console.log(errors);
   return (
     <>
       <Form>
@@ -86,6 +88,18 @@ const FormikSignUp = withFormik({
   }),
   handleSubmit(values, { resetForm, setSubmitting }) {
     console.log("SubmitValues", values);
+
+      // Creating payload for login using axiosWithAuth
+      const newUser = {
+        username: values.email,
+        email: values.email, 
+        password: values.password,
+        name: values.firstName + " " + values.lastName,
+        location: values.location
+      };
+    
+      console.log("New User", newUser);
+
     if (
       values.remember === true &&
       (!localStorage.passportRemember ||
@@ -97,8 +111,8 @@ const FormikSignUp = withFormik({
       console.log("SignUp storage", localStorage);
     }
     setTimeout(() => {
-      axios
-        .post("https://reqres.in/api/users", values)
+      axiosWithAuth()
+        .post("/auth/register", newUser)
         .then(res => {
           console.log(res);
           setSubmitting(false);
