@@ -3,6 +3,7 @@ import Restaurant from "./Restaurant";
 
 function Passport({ passport, setFlipped }) {
   console.log(passport);
+  //todo add get request to retrieve users passports from the api
   return (
     <>
       {passport.map(e => (
