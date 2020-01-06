@@ -1,11 +1,14 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
-import axios from "axios";
+
+import axiosWithAuth from "../utils"
 
 function Login({ errors, touched, values, isSubmitting }) {
-  // const {} = values;
-  //   console.log("values", values);
+  
+
+  console.log("values", values);
+
   return (
     <>
       <Form>
@@ -58,14 +61,16 @@ const FormikLogin = withFormik({
     email,
     password,
     setLocalStorage,
-    getLocalStorage
+    getLocalStorage,
+    // credentials
   }) {
     return {
       remember: remember || false,
       email: email,
       password: password,
       setStorage: setLocalStorage,
-      getStorage: getLocalStorage
+      getStorage: getLocalStorage,
+      // credentials: credentials
     };
   },
 
@@ -84,6 +89,14 @@ const FormikLogin = withFormik({
   handleSubmit(values, { resetForm, setSubmitting }) {
     console.log("SubmitValues", values);
     // * SET LOCAL STORAGE BASED ON REMEMBER email and password changes
+
+    // Creating payload for login using axiosWithAuth
+    const credentials = {
+      username: values.email,
+      password: values.password
+    };
+  
+    // console.log("credentials", credentials);
 
     if (
       values.remember === true &&
@@ -112,10 +125,11 @@ const FormikLogin = withFormik({
     }
 
     setTimeout(() => {
-      axios
-        .post("https://reqres.in/api/users", values)
+      axiosWithAuth()
+        .post("/auth/login", credentials)
         .then(res => {
           console.log(res);
+          localStorage.setItem('token', res.data.token);
           setSubmitting(false);
         })
         .catch(res => console.log(res))
