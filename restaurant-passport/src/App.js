@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Route } from "react-router-dom";
+import axiosWithAuth from "./utils";
 
 import PrivateRoute from "./components/PrivateRoute";
 import Navigation from "./components/Navigation";
@@ -16,33 +17,33 @@ class App extends Component {
   state = {
     rememberMe: "",
     rememberEmail: "",
-    rememberPassword: "",
-    users: [
-      {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        location: "",
-        remember: ""
-      }
-    ],
+    rememberPassword: ""
+    // users: [
+    //   {
+    //     firstName: "",
+    //     lastName: "",
+    //     email: "",
+    //     password: "",
+    //     location: "",
+    //     remember: ""
+    //   }
+    // ],
 
-    passport: [
-      {
-        date: "12/25/19",
-        name: "Teals Seafood Market",
-        address: "OPeeDee River Way",
-        city: "Cheraw",
-        zip: "094234",
-        number: "801-489-4729",
-        website: "www.none.com",
-        rating: "5",
-        notes: "Best teal burger you will ever find",
-        stamped: "true",
-        flipped: false
-      }
-    ]
+    // passport: [
+    //   {
+    //     date: "12/25/19",
+    //     name: "Teals Seafood Market",
+    //     address: "OPeeDee River Way",
+    //     city: "Cheraw",
+    //     zip: "094234",
+    //     number: "801-489-4729",
+    //     website: "www.none.com",
+    //     rating: "5",
+    //     notes: "Best teal burger you will ever find",
+    //     stamped: "true",
+    //     flipped: false
+    //   }
+    // ]
   };
 
   componentWillMount() {
@@ -67,7 +68,27 @@ class App extends Component {
     // this.setState(...{
     // });
     // console.log(e.target);
-    console.log(this.state);
+    console.log("flipped");
+  };
+  //  axiosWithAuth()
+  //       .post("/auth/login", credentials)
+  //       .then(res => {
+  //         console.log(res);
+  //         localStorage.setItem('token', res.data.token);
+  //         setSubmitting(false);
+  //       })
+  //       .catch(res => console.log(res))
+  //       .finally(resetForm());
+
+  addToPassport = restaurant => {
+    console.log("added to restaurant", restaurant);
+    const newRestaurant = {
+      restaurant_id: restaurant.id
+    };
+    axiosWithAuth()
+      .post(`https://rpass.herokuapp.com/api/users/3/passport`, newRestaurant)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   //   componentDidMount() {
@@ -104,16 +125,16 @@ class App extends Component {
         <Route path="/passport-form">
           {/*//! fix prop here  */}
           <PassportForm
-            date={this.state.passport[0].date}
-            name={this.state.passport[0].name}
-            address={this.state.passport[0].address}
-            city={this.state.passport[0].city}
-            zip={this.state.passport[0].zip}
-            number={this.state.passport[0].number}
-            website={this.state.passport[0].website}
-            rating={this.state.passport[0].rating}
-            notes={this.state.passport[0].notes}
-            stamped={this.state.passport[0].stamped}
+          // date={this.state.passport[0].date}
+          // name={this.state.passport[0].name}
+          // address={this.state.passport[0].address}
+          // city={this.state.passport[0].city}
+          // zip={this.state.passport[0].zip}
+          // number={this.state.passport[0].number}
+          // website={this.state.passport[0].website}
+          // rating={this.state.passport[0].rating}
+          // notes={this.state.passport[0].notes}
+          // stamped={this.state.passport[0].stamped}
           />
         </Route>
         {/* <Route path="/passport">
@@ -123,7 +144,7 @@ class App extends Component {
           />
         </Route> */}
         <Route path="/explore">
-          <Explore />
+          <Explore add={this.addToPassport} />
         </Route>
         <PrivateRoute path="/passport" component={Passport} />
       </div>

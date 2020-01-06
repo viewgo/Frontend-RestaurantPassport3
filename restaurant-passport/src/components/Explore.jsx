@@ -3,33 +3,34 @@ import axios from "axios";
 
 //todo add new restaurants to state here
 //https://rpass.herokuapp.com/api/explore?search=chinese&location=newyork
-function Explore() {
+function Explore({ add }) {
   const [localList, setLocalList] = useState([]);
   const [input, setInput] = useState({
     search: "",
     location: ""
   });
-  //   const [searchTest, setSearchTest] = useState("0");
+  const [searchTest, setSearchTest] = useState(false);
 
   useEffect(() => {
     axios
       .get(
         `https://rpass.herokuapp.com/api/explore?search=${input.search}&location=${input.location}`
       )
-      .then(res => setLocalList(res.data))
+      .then(res => {
+        console.log(res.data);
+        setLocalList(res.data);
+        setInput({
+          search: "",
+          location: ""
+        });
+      })
       .catch(err => console.log(err));
-  }, [input]);
-  //   console.log(localList);
+  }, [searchTest]);
 
   const onFormSubmit = evt => {
     evt.preventDefault();
-    // setSearchTest("1");
-    setInput({
-      search: "",
-      location: ""
-    });
+    setSearchTest(!searchTest);
   };
-  //   console.log(searchTest);
   const onChangeHandler = e => {
     setInput({
       ...input,
@@ -72,14 +73,14 @@ function Explore() {
           <div key={e.id} className="explore-card">
             <img className="explore-img" src={e.img_url} alt={e.name} />
             <h3>Name: {e.name}</h3>
-            <p>Address: {e.address}</p>
-            <p>City: {e.city}</p>
-            <p>State: {e.state}</p>
-            <p>Zip: {e.zipcode}</p>
+            <p>
+              Address: {e.address} {e.city}, {e.state} {e.zipcode}
+            </p>
             <p>Number: {e.phone_number}</p>
             <p>
               <a href={e.website_url}>Website</a>
             </p>
+            <button onClick={() => add(e)}>Add to Passport</button>
           </div>
         ))}
       </div>
