@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 import { Route } from "react-router-dom";
+
+import PrivateRoute from "./components/PrivateRoute"
 import Navigation from "./components/Navigation";
 import SignUpForm from "./components/SignUpForm";
 import LoginForm from "./components/LoginForm";
@@ -115,12 +117,14 @@ class App extends React.Component {
             stamped={this.state.passport[0].stamped}
           />
         </Route>
-        <Route path="/passport">
+        {/* <Route path="/passport">
           <Passport
             passport={this.state.passport}
             setFlipped={this.setFlipped}
           />
-        </Route>
+        </Route> */}
+        <PrivateRoute path="/passport" component={Passport}/>
+
       </div>
     );
   }
