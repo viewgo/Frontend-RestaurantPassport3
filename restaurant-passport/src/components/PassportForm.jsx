@@ -7,9 +7,9 @@ import axiosWithAuth from "../utils/index";
 function PassportForm({ values, errors, touched, isSubmitting }) {
   console.log("values", values);
   return (
-    <>
+    <div className="entry-form">
       <Form>
-        <label name="date">
+        <label name="date" className="entry-label-date">
           {" "}
           {touched.date && errors.date && (
             <p className="error">{errors.date}</p>
@@ -22,7 +22,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
             value={values.date || Date()}
           />
         </label>
-        <label name="name">
+        <label name="name" className="entry-label-name">
           {" "}
           {touched.name && errors.name && (
             <p className="error">{errors.name}</p>
@@ -35,7 +35,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
             value={values.name || ""}
           />
         </label>
-        <label name="address">
+        <label name="address" className="entry-label-address">
           {" "}
           {touched.address && errors.address && (
             <p className="error">{errors.address}</p>
@@ -48,7 +48,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
             value={values.address || ""}
           />
         </label>
-        <label name="city">
+        <label name="city" className="entry-label-city">
           {" "}
           {touched.city && errors.city && (
             <p className="error">{errors.city}</p>
@@ -61,7 +61,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
             value={values.city || ""}
           />
         </label>
-        <label name="state">
+        <label name="state" className="entry-label-state">
           {" "}
           {touched.state && errors.state && (
             <p className="error">{errors.state}</p>
@@ -74,7 +74,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
             value={values.state || ""}
           />
         </label>
-        <label name="zip">
+        <label name="zip" className="entry-label-zip">
           {" "}
           {touched.zip && errors.zip && <p className="error">{errors.zip}</p>}
           Zip:
@@ -85,7 +85,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
             value={values.zip || ""}
           />
         </label>
-        <label name="number">
+        <label name="number" className="entry-label-number">
           {" "}
           {touched.number && errors.number && (
             <p className="error">{errors.number}</p>
@@ -98,7 +98,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
             value={values.number || ""}
           />
         </label>
-        <label name="website">
+        <label name="website" className="entry-label-website">
           {" "}
           {touched.website && errors.website && (
             <p className="error">{errors.website}</p>
@@ -114,7 +114,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
 
         {/*//!  fix the input type here */}
 
-        <label name="rating">
+        <label name="rating" className="entry-label-rating">
           {" "}
           {touched.rating && errors.rating && (
             <p className="error">{errors.rating}</p>
@@ -127,7 +127,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
             value={values.rating || ""}
           />
         </label>
-        <label name="note">
+        <label name="note" className="entry-label-notes">
           {" "}
           {touched.note && errors.note && (
             <p className="error">{errors.note}</p>
@@ -140,7 +140,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
             value={values.note || ""}
           />
         </label>
-        <label name="stamped">
+        <label name="stamped" className="entry-label-stamped">
           {" "}
           {touched.stamped && errors.stamped && (
             <p className="error">{errors.stamped}</p>
@@ -158,7 +158,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
           </label>
         </label>
       </Form>
-    </>
+    </div>
   );
 }
 
