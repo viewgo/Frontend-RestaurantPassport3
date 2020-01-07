@@ -115,7 +115,7 @@ class App extends Component {
             getLocalStorage={this.localStorageGet}
           />
         </Route>
-        <Route path="/login">
+        {/* <Route path="/login">
           <LoginForm
             setLocalStorage={this.localStorageSet}
             getLocalStorage={this.localStorageGet}
@@ -123,7 +123,15 @@ class App extends Component {
             email={this.state.rememberEmail}
             password={this.state.rememberPassword}
           />
-        </Route>
+        </Route> */}
+        <Route exact path="/login" render={(props) => (<LoginForm
+            props={props}
+            setLocalStorage={this.localStorageSet}
+            getLocalStorage={this.localStorageGet}
+            remember={this.state.rememberMe}
+            email={this.state.rememberEmail}
+            password={this.state.rememberPassword}
+        />)} />
         <Route path="/passport-form">
           {/*//! fix prop here  */}
           <PassportForm
