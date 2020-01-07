@@ -63,22 +63,9 @@ class App extends Component {
     localStorage.setItem(item, JSON.stringify(value));
   };
 
-  setFlipped = e => {
-    // console.log(this.state.passport[0]);
-    // this.setState(...{
-    // });
-    // console.log(e.target);
+  setFlipped = evt => {
     console.log("flipped");
   };
-  //  axiosWithAuth()
-  //       .post("/auth/login", credentials)
-  //       .then(res => {
-  //         console.log(res);
-  //         localStorage.setItem('token', res.data.token);
-  //         setSubmitting(false);
-  //       })
-  //       .catch(res => console.log(res))
-  //       .finally(resetForm());
 
   addToPassport = restaurant => {
     console.log("added to restaurant", restaurant);
