@@ -2,62 +2,96 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 
-import axiosWithAuth from "../utils"
-
+import axiosWithAuth from "../utils";
 
 function SignUp({ errors, touched, isSubmitting }) {
   // const {} = values;
   // console.log(errors);
   return (
-    <>
+    <div className="signup-form">
       <Form>
         {touched.firstName && errors.firstName && (
           <p className="error">{errors.firstName}</p>
         )}
-        <label name="FirstName">
-          First Name:
-          <Field name="firstName" placeholder="First Name" type="text" />
-        </label>
+        {/* <label name="FirstName" className="signup-label-fname">
+          First Name: */}
+        <Field
+          className="signup-field-fname field"
+          name="firstName"
+          placeholder="First Name"
+          type="text"
+        />
+        {/* </label> */}
         {touched.lastName && errors.lastName && (
           <p className="error">{errors.lastName}</p>
         )}
-        <label>
-          Last Name:
-          <Field name="lastName" placeholder="Last Name" type="text" />
-        </label>
+        {/* <label className="signup-label-lname">
+          Last Name: */}
+        <Field
+          className="signup-field-lname field"
+          name="lastName"
+          placeholder="Last Name"
+          type="text"
+        />
+        {/* </label> */}
         {touched.email && errors.email && (
           <p className="error">{errors.email}</p>
         )}
-        <label>
+        {/* <label className="signup-label-email">
           {" "}
-          Email :
-          <Field name="email" placeholder="Email" type="email" />
-        </label>
+          Email : */}
+        <Field
+          className="signup-field-email field"
+          name="email"
+          placeholder="Email"
+          type="email"
+        />
+        {/* </label> */}
         {touched.password && errors.password && (
           <p className="error">{errors.password}</p>
         )}
-        <label>
-          Password:
-          <Field name="password" placeholder="Password" type="password" />
-        </label>
+        {/* <label className="signup-label-password">
+          Password: */}
+        <Field
+          className="signup-field-password field"
+          name="password"
+          placeholder="Password"
+          type="password"
+        />
+        {/* </label> */}
         {touched.location && errors.location && (
           <p className="error">{errors.location}</p>
         )}
-        <label>
-          Location:
-          <Field name="location" placeholder="City/Zip" type="text" />
+        {/* <label className="signup-label-location">
+          Location: */}
+        <Field
+          className="signup-field-location field"
+          name="location"
+          placeholder="City/Zip"
+          type="text"
+        />
+        {/* </label> */}
+        <label name="rememberMe" className="signup-label-remember">
+          Remember:
+          <Field
+            className="signup-field-remember field"
+            name="remember"
+            type="checkbox"
+            placeholder="false"
+          />
         </label>
-        <label name="rememberMe">
-          Remember Me:
-          <Field name="remember" type="checkbox" placeholder="false" />
-        </label>
-        <label name="submitButton">
-          <button name="submitBtn" type="submit" disabled={isSubmitting}>
+        <label name="submitButton" className="signup-label-btn">
+          <button
+            name="submitBtn"
+            type="submit"
+            disabled={isSubmitting}
+            className="signup-submitBtn"
+          >
             {!isSubmitting ? "Sign Up" : "Processing"}
           </button>
         </label>
       </Form>
-    </>
+    </div>
   );
 }
 
@@ -89,16 +123,16 @@ const FormikSignUp = withFormik({
   handleSubmit(values, { resetForm, setSubmitting, props }) {
     console.log("SubmitValues", values);
 
-      // Creating payload for login using axiosWithAuth
-      const newUser = {
-        username: values.email,
-        email: values.email, 
-        password: values.password,
-        name: values.firstName + " " + values.lastName,
-        location: values.location
-      };
-    
-      console.log("New User", newUser);
+    // Creating payload for login using axiosWithAuth
+    const newUser = {
+      username: values.email,
+      email: values.email,
+      password: values.password,
+      name: values.firstName + " " + values.lastName,
+      location: values.location
+    };
+
+    console.log("New User", newUser);
 
     if (
       values.remember === true &&

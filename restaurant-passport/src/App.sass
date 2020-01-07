@@ -2,20 +2,132 @@
     display: flex
     justify-content: space-around
 
+//! Login Form
+form
+    width: 65%
+    border: 5px dotted black
+    margin: 20px auto
+    padding: 10px
+    display: flex
+    flex-direction: column
+
+    .field
+        border: 2px solid green
+        width: 85%
+        margin: 5px auto
+
+    .login-label-remember
+        border: 1px solid blue
+        display: flex
+        flex-direction: row
+        width: 85%
+        margin: 5px auto
+
+    .login-label-btn
+        display: flex
+        flex-direction: row
+        justify-content: center
+
+    .login-submitBtn
+        border: 1px soild blue
+        width: 45%
+        color: green
+        background: lightblue
+
+// ! SignUp Form
+
+.signup-label-remember
+    border: 1px solid blue
+    margin: 5px auto
+    display: flex
+.signup-label-btn
+    display: flex
+    margin: 5px auto
+.signup-submitBtn
+    color: green
+    background: lightblue
+    margin: 5px auto
+
+// //! Entry Form
+
+.entry-label-stamped
+    border: 1px solid pink
+    width: 85%
+    margin: auto
+    display: flex
+.entry-field-stamped
+    border: 1px solid red
+
+.entry-label-btn
+    width: 100%
+
+    button
+        color: blue
+        // font-size: 1rem
+        background: lightgreen
+        width: 100%
+
 .error
     color: red
 
 //! Explore
-.explore-img
-    height: 100px
-    width: 100px
 
-.explore-card
-    border: 2px solid green
-    width: 45%
-    margin: auto
+.explore-search
+    background: pink
+    width: 65%
+    display: flex
+
+    .form-input
+        width: 80%
+        margin: 3px auto
+    .form-location
+        width: 80%
+        margin: 3px auto
+
+    .form-btn
+        color: blue
+        width: 47.5%
+        margin: auto
 
 .explore-list
     width: 98%
     display: flex
     flex-wrap: wrap
+    margin: auto
+
+    .explore-card
+        border: 2px solid green
+        width: 45%
+        margin: 10px auto
+        display: flex
+        flex-direction: column
+        text-align: center
+        justify-content: space-around
+
+        .explore-img
+            height: 100px
+            width: 100px
+            margin: 5px auto
+
+        h3
+            color: green
+            margin: 5px auto
+
+        .explore-card-address
+            color: blue
+            margin: 5px auto
+        .explore-card-number
+            color: aquamarine
+            margin: 5px auto
+            a
+                text-decoration: none
+                text-emphasis: italic
+                color: aquamarine
+        .explore-card-website
+            margin: 5px auto
+            a
+                text-decoration: none
+                color: red
+        button
+            margin: 3px auto
+            background: lightblue

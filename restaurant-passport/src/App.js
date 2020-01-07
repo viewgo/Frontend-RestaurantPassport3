@@ -21,7 +21,7 @@ class App extends Component {
     flipped: true
   };
 
-  user_id = localStorage.getItem('user_id')
+  user_id = localStorage.getItem("user_id");
 
   componentWillMount() {
     // console.log("storage", localStorage);
@@ -46,8 +46,8 @@ class App extends Component {
     // console.log(this.state.passport[0]);
     // this.setState(...{
     // });
-    console.log(e);
-    console.log("flipped");
+    // console.log(e);
+    // console.log("flipped");
   };
 
   addToPassport = restaurant => {
@@ -56,7 +56,10 @@ class App extends Component {
       restaurant_id: restaurant.id
     };
     axiosWithAuth()
-      .post(`https://rpass.herokuapp.com/api/users/${this.user_id}/passport`, newRestaurant)
+      .post(
+        `https://rpass.herokuapp.com/api/users/${this.user_id}/passport`,
+        newRestaurant
+      )
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };

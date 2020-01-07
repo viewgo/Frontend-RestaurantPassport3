@@ -4,48 +4,48 @@ import * as yup from "yup";
 
 import axiosWithAuth from "../utils";
 
-function Login( { errors, touched, values, isSubmitting } ) {
-  
+function Login({ errors, touched, values, isSubmitting }) {
+  console.log("values", values);
 
-  // console.log("values", values);
-  
   return (
-    <div className="login-form">
-      <Form>
-        <label name="email" className="login-label-email">
-          {" "}
-          {touched.email && errors.email && (
-            <p className="error">{errors.email}</p>
-          )}
-          Email :
-          <Field
-            name="email"
-            placeholder="Email"
-            type="email"
-            value={values.email || ""}
-          />
-        </label>
-        <label name="password" className="login-label-password">
-          {touched.password && errors.password && (
-            <p className="error">{errors.password}</p>
-          )}
-          Password:
-          <Field
-            name="password"
-            placeholder="Password"
-            type="password"
-            value={values.password || ""}
-          />
-        </label>
-        <label name="rememberMe" className="login-label-remember">
-          Remember Me:
-          <Field
-            name="remember"
-            type="checkbox"
-            placeholder={JSON.stringify(values.remember) || "false"}
-          />
-        </label>
-        {/* <label name="submitButton"> */}
+    <Form>
+      {/* <label name="email" className="login-label-email">
+        {" "}
+        {touched.email && errors.email && (
+          <p className="error">{errors.email}</p>
+        )}
+        Email : */}
+      <Field
+        className="login-field-email field"
+        name="email"
+        placeholder="Email"
+        type="email"
+        value={values.email || ""}
+      />
+      {/* </label> */}
+      {/* <label name="password" className="login-label-password"> */}
+      {touched.password && errors.password && (
+        <p className="error">{errors.password}</p>
+      )}
+      {/* Password: */}
+      <Field
+        className="login-field-password field"
+        name="password"
+        placeholder="Password"
+        type="password"
+        value={values.password || ""}
+      />
+      {/* </label> */}
+      <label name="remember" className="login-label-remember">
+        Remember:
+        <Field
+          className="login-field-remember field"
+          name="remember"
+          type="checkbox"
+          placeholder={JSON.stringify(values.remember) || "false"}
+        />
+      </label>
+      <label name="submitButton" className="login-label-btn">
         <button
           name="submitBtn"
           type="submit"
@@ -54,9 +54,8 @@ function Login( { errors, touched, values, isSubmitting } ) {
         >
           {!isSubmitting ? "Log In" : "Logging In"}
         </button>
-        {/* </label> */}
-      </Form>
-    </div>
+      </label>
+    </Form>
   );
 }
 
