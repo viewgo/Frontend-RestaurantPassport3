@@ -40,44 +40,46 @@ function Explore({ add }) {
   return (
     <div className="explore-wrapper">
       <form onSubmit={onFormSubmit} className="explore-search">
-        <label className="form-label-input">
-          Search:
-          <input
-            className="form-input"
-            type="text"
-            placeholder="search"
-            name="search"
-            id="search"
-            onChange={onChangeHandler}
-            value={input.search}
-          />
-        </label>
-        <label className="form-label-location">
-          Location:
-          <input
-            className="form-location"
-            type="text"
-            placeholder="Location"
-            name="location"
-            id="location"
-            onChange={onChangeHandler}
-            value={input.location}
-          />
-        </label>
+        {/* <label className="form-label-input">
+          Search: */}
+        <input
+          className="form-input"
+          type="text"
+          placeholder="Search by food type"
+          name="search"
+          id="search"
+          onChange={onChangeHandler}
+          value={input.search}
+        />
+        {/* </label> */}
+        {/* <label className="form-label-location">
+          Location: */}
+        <input
+          className="form-location"
+          type="text"
+          placeholder="Search by location"
+          name="location"
+          id="location"
+          onChange={onChangeHandler}
+          value={input.location}
+        />
+        {/* </label> */}
         <button type="submit" className="form-btn">
-          Search!
+          Search Type/Location
         </button>
       </form>
       <div className="explore-list">
         {localList.map(e => (
           <div key={e.id} className="explore-card">
             <img className="explore-img" src={e.img_url} alt={e.name} />
-            <h3>Name: {e.name}</h3>
-            <p>
-              Address: {e.address} {e.city}, {e.state} {e.zipcode}
+            <h3>{e.name}</h3>
+            <p className="explore-card-address">
+              {e.address} {e.city}, {e.state} {e.zipcode}
             </p>
-            <p>Number: {e.phone_number}</p>
-            <p>
+            <p className="explore-card-number">
+              Tel: <a href="tel:{e.phone_number}">{e.phone_number}</a>{" "}
+            </p>
+            <p className="explore-card-website">
               <a href={e.website_url}>Website</a>
             </p>
             <button onClick={() => add(e)}>Add to Passport</button>

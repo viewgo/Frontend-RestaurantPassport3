@@ -6,11 +6,10 @@
       justify-content: space-around;
 }
 
-.login-form {
-  border: 2px dotted black;
-  width: 30%;
-  margin: auto;
-  margin-top: 20px;
+form {
+  width: 65%;
+  border: 5px dotted black;
+  margin: 20px auto;
   padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -21,89 +20,114 @@
           flex-direction: column;
 }
 
-.login-form .login-label-email {
-  border: 1px solid green;
-  width: 100%;
-  margin: 20px 10px;
+form .field {
+  border: 2px solid green;
+  width: 85%;
+  margin: 5px auto;
 }
 
-.login-form .login-label-password {
-  border: 1px solid lawngreen;
-  width: 100%;
-  margin: 10px 10px;
+form .login-label-remember {
+  border: 1px solid blue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 85%;
+  margin: 5px auto;
 }
 
-.login-form .login-label-remember {
-  border: 1px solid red;
-  width: 100%;
-  margin: 10px 10px;
+form .login-label-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.login-form .login-submitBtn {
+form .login-submitBtn {
   border: 1px soild blue;
-  width: 30%;
+  width: 45%;
   color: green;
   background: lightblue;
-  margin: 10px 10px;
 }
 
-.signup-form {
-  border: 2px dotted black;
-  width: 35%;
-  margin: auto;
-  margin-top: 20px;
-  padding: 10px;
+.signup-label-remember {
+  border: 1px solid blue;
+  margin: 5px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
-.signup-form .signup-label-fname {
+.signup-label-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px auto;
+}
+
+.signup-submitBtn {
+  color: green;
+  background: lightblue;
+  margin: 5px auto;
+}
+
+.entry-label-stamped {
   border: 1px solid pink;
+  width: 85%;
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.signup-form .signup-label-lname {
+.entry-field-stamped {
   border: 1px solid red;
 }
 
-.signup-form .signup-label-email {
-  border: 1px solid orange;
+.entry-label-btn {
+  width: 100%;
 }
 
-.signup-form .signup-label-password {
-  border: 1px solid purple;
-}
-
-.signup-form .signup-label-location {
-  border: 1px solid green;
-}
-
-.signup-form .signup-label-remember {
-  border: 1px solid blue;
-}
-
-.signup-form .signup-submitBtn {
-  color: green;
-  background: blue;
+.entry-label-btn button {
+  color: blue;
+  background: lightgreen;
+  width: 100%;
 }
 
 .error {
   color: red;
 }
 
-.explore-img {
-  height: 100px;
-  width: 100px;
+.explore-search {
+  background: pink;
+  width: 65%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.explore-card {
-  border: 2px solid green;
-  width: 45%;
+.explore-search .form-input {
+  width: 80%;
+  margin: 3px auto;
+}
+
+.explore-search .form-location {
+  width: 80%;
+  margin: 3px auto;
+}
+
+.explore-search .form-btn {
+  color: blue;
+  width: 47.5%;
   margin: auto;
 }
 
@@ -114,5 +138,64 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: auto;
+}
+
+.explore-list .explore-card {
+  border: 2px solid green;
+  width: 45%;
+  margin: 10px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.explore-list .explore-card .explore-img {
+  height: 100px;
+  width: 100px;
+  margin: 5px auto;
+}
+
+.explore-list .explore-card h3 {
+  color: green;
+  margin: 5px auto;
+}
+
+.explore-list .explore-card .explore-card-address {
+  color: blue;
+  margin: 5px auto;
+}
+
+.explore-list .explore-card .explore-card-number {
+  color: aquamarine;
+  margin: 5px auto;
+}
+
+.explore-list .explore-card .explore-card-number a {
+  text-decoration: none;
+  -webkit-text-emphasis: italic;
+          text-emphasis: italic;
+  color: aquamarine;
+}
+
+.explore-list .explore-card .explore-card-website {
+  margin: 5px auto;
+}
+
+.explore-list .explore-card .explore-card-website a {
+  text-decoration: none;
+  color: red;
+}
+
+.explore-list .explore-card button {
+  margin: 3px auto;
+  background: lightblue;
 }
 /*# sourceMappingURL=App.css.map */
