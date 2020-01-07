@@ -109,21 +109,17 @@ class App extends Component {
         <Route path="/">
           <Navigation />
         </Route>
-        <Route path="/signup">
+        {/* <Route path="/signup">
           <SignUpForm
             setLocalStorage={this.localStorageSet}
             getLocalStorage={this.localStorageGet}
           />
-        </Route>
-        {/* <Route path="/login">
-          <LoginForm
+        </Route> */}
+        <Route exact path="/signup" render={(props) => (<SignUpForm
+            props={props}
             setLocalStorage={this.localStorageSet}
             getLocalStorage={this.localStorageGet}
-            remember={this.state.rememberMe}
-            email={this.state.rememberEmail}
-            password={this.state.rememberPassword}
-          />
-        </Route> */}
+        />)} />
         <Route exact path="/login" render={(props) => (<LoginForm
             props={props}
             setLocalStorage={this.localStorageSet}
