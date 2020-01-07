@@ -46,7 +46,7 @@ class App extends Component {
     // ]
   };
 
-  user_id = localStorage.getItem('user_id')
+  user_id = localStorage.getItem("user_id");
 
   componentWillMount() {
     // console.log("storage", localStorage);
@@ -75,7 +75,10 @@ class App extends Component {
       restaurant_id: restaurant.id
     };
     axiosWithAuth()
-      .post(`https://rpass.herokuapp.com/api/users/${this.user_id}/passport`, newRestaurant)
+      .post(
+        `https://rpass.herokuapp.com/api/users/${this.user_id}/passport`,
+        newRestaurant
+      )
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
@@ -126,8 +129,19 @@ class App extends Component {
           // stamped={this.state.passport[0].stamped}
           />
         </Route>
-        <PrivateRoute exact path="/passport" component={Passport} passport={this.state.passport} setFlipped={this.setFlipped} />
-        <PrivateRoute exact path="/explore" component={Explore} add={this.addToPassport} />
+        <PrivateRoute
+          exact
+          path="/passport"
+          component={Passport}
+          passport={this.state.passport}
+          setFlipped={this.setFlipped}
+        />
+        <PrivateRoute
+          exact
+          path="/explore"
+          component={Explore}
+          add={this.addToPassport}
+        />
         {/* <Route path="/explore">
           <Explore add={this.addToPassport} />
         </Route> */}
