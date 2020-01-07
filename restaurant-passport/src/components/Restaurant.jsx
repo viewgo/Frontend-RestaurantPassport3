@@ -1,19 +1,19 @@
 import React from "react";
+import PassportEdit from "./PassportEdit";
 
-function Restaurant({ restaurant, setFlipped }) {
-  console.log("rest", restaurant);
-  if (restaurant.flipped === false) {
+function Restaurant({ restaurant, setFlipped, deleteRestaurant, flipped }) {
+  console.log("restaurant", restaurant);
+
+  const onClickDelete = (e) => {
+    e.preventDefault();
+    deleteRestaurant({ "restaurant_id": restaurant.restaurant_id });
+  }
+
+  if (flipped === false) {
     return (
       <>
-        <div
-          className="restaurant-card-front"
-          id={restaurant.date}
-          onClick={() => setFlipped()}
-        >
-          <h3>Name: {restaurant.name}</h3>
-          <p>City: {restaurant.city}</p>
-          <p>Rating: {restaurant.rating}</p>
-          <p>Stamped: {restaurant.stamped}</p>
+        <div className="restaurant-card-front" >
+          <PassportEdit values={restaurant} setFlipped={setFlipped} />
         </div>
       </>
     );
@@ -28,12 +28,12 @@ function Restaurant({ restaurant, setFlipped }) {
             {restaurant.zipcode}
           </p>
           <p>Number: {restaurant.phone_number}</p>
-          <p>
             <a href={restaurant.website_url}>Website</a>
-          </p>
           <p>Rating: {restaurant.rating}</p>
           <p>Notes: {restaurant.notes}</p>
           <p>Stamped: {restaurant.stamped}</p>
+          <button onClick={(e) => onClickDelete(e)} >Delete</button>
+          <button onClick={() => setFlipped(false)} >Edit</button>
         </div>
       </>
     );
@@ -41,16 +41,3 @@ function Restaurant({ restaurant, setFlipped }) {
 }
 
 export default Restaurant;
-
-// {
-//         date: "",
-//         name: "",
-//         address: "",
-//         city: "",
-//         zip: "",
-//         number: "",
-//         website: "",
-//         rating: "",
-//         notes: "",
-//         stamped: ""
-//       }

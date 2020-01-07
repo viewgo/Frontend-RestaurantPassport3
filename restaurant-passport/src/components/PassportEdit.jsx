@@ -42,6 +42,7 @@ function PassportEdit(props) {
         .put(`/users/${user_id}/passport`, passportEdit)
         .then(res => {
             console.log(res)
+            props.setFlipped(true)
         })
         .catch(err => console.log(err))
   };

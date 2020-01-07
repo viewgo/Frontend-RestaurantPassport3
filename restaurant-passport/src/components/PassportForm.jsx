@@ -193,7 +193,6 @@ const FormikPassportForm = withFormik({
   handleSubmit(values, { resetForm, setSubmitting }) {
     console.log("SubmitValues", values);
     const newRestaurant = {
-      id: Date.now(),
       name: values.name,
       address: values.address,
       city: values.city,
@@ -214,6 +213,7 @@ const FormikPassportForm = withFormik({
     };
     setTimeout(() => {
       console.log(newRestaurant);
+      const user_id = localStorage.getItem('user_id')
       axios
         .post("https://rpass.herokuapp.com/api/restaurants", newRestaurant)
         .then(res => {
@@ -221,14 +221,14 @@ const FormikPassportForm = withFormik({
           setSubmitting(false);
           axiosWithAuth()
             .post(
-              `https://rpass.herokuapp.com/api/users/3/passport`,
+              `/users/${user_id}/passport`,
               newRestaurantId
             )
             .then(res => {
               console.log("newTestPost", res);
               axiosWithAuth()
                 .put(
-                  `https://rpass.herokuapp.com/api/users/3/passport`,
+                  `/users/${user_id}/passport`,
                   restaurantPut
                 )
                 .then(res => console.log("newTestPut", res))

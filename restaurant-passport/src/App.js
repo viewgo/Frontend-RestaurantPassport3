@@ -17,33 +17,8 @@ class App extends Component {
   state = {
     rememberMe: "",
     rememberEmail: "",
-    rememberPassword: ""
-    // users: [
-    //   {
-    //     firstName: "",
-    //     lastName: "",
-    //     email: "",
-    //     password: "",
-    //     location: "",
-    //     remember: ""
-    //   }
-    // ],
-
-    // passport: [
-    //   {
-    //     date: "12/25/19",
-    //     name: "Teals Seafood Market",
-    //     address: "OPeeDee River Way",
-    //     city: "Cheraw",
-    //     zip: "094234",
-    //     number: "801-489-4729",
-    //     website: "www.none.com",
-    //     rating: "5",
-    //     notes: "Best teal burger you will ever find",
-    //     stamped: "true",
-    //     flipped: false
-    //   }
-    // ]
+    rememberPassword: "",
+    flipped: true
   };
 
   user_id = localStorage.getItem('user_id')
@@ -56,6 +31,7 @@ class App extends Component {
       rememberPassword: this.localStorageGet("passportPassword") || ""
     });
   }
+
   localStorageGet = item =>
     // console.log("LSG", item)
     JSON.parse(localStorage.getItem(item));
@@ -66,21 +42,13 @@ class App extends Component {
   };
 
   setFlipped = e => {
+    this.setState({flipped: e})
     // console.log(this.state.passport[0]);
     // this.setState(...{
     // });
-    // console.log(e.target);
+    console.log(e);
     console.log("flipped");
   };
-  //  axiosWithAuth()
-  //       .post("/auth/login", credentials)
-  //       .then(res => {
-  //         console.log(res);
-  //         localStorage.setItem('token', res.data.token);
-  //         setSubmitting(false);
-  //       })
-  //       .catch(res => console.log(res))
-  //       .finally(resetForm());
 
   addToPassport = restaurant => {
     console.log("added to restaurant", restaurant);
@@ -93,14 +61,6 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  //   componentDidMount() {
-  //     console.log("storage", localStorage);
-  //     this.setState({
-  //       rememberMe: this.localStorageGet("passportRemember") || false,
-  //       rememberEmail: this.localStorageGet("passportEmail") || "",
-  //       rememberPassword: this.localStorageGet("passportPassword") || ""
-  //     });
-  //   }
 
   render() {
     // console.log("State", this.state);
@@ -109,17 +69,13 @@ class App extends Component {
         <Route path="/">
           <Navigation />
         </Route>
-        {/* <Route path="/signup">
-          <SignUpForm
-            setLocalStorage={this.localStorageSet}
-            getLocalStorage={this.localStorageGet}
-          />
-        </Route> */}
+
         <Route exact path="/signup" render={(props) => (<SignUpForm
             props={props}
             setLocalStorage={this.localStorageSet}
             getLocalStorage={this.localStorageGet}
         />)} />
+
         <Route exact path="/login" render={(props) => (<LoginForm
             props={props}
             setLocalStorage={this.localStorageSet}
@@ -128,26 +84,12 @@ class App extends Component {
             email={this.state.rememberEmail}
             password={this.state.rememberPassword}
         />)} />
+
         <Route path="/passport-form">
-          {/*//! fix prop here  */}
-          <PassportForm
-          // date={this.state.passport[0].date}
-          // name={this.state.passport[0].name}
-          // address={this.state.passport[0].address}
-          // city={this.state.passport[0].city}
-          // zip={this.state.passport[0].zip}
-          // number={this.state.passport[0].number}
-          // website={this.state.passport[0].website}
-          // rating={this.state.passport[0].rating}
-          // notes={this.state.passport[0].notes}
-          // stamped={this.state.passport[0].stamped}
-          />
+          <PassportForm />
         </Route>
-        <PrivateRoute exact path="/passport" component={Passport} passport={this.state.passport} setFlipped={this.setFlipped} />
+        <PrivateRoute exact path="/passport" component={Passport} passport={this.state.passport} setFlipped={this.setFlipped} flipped={this.state.flipped} />
         <PrivateRoute exact path="/explore" component={Explore} add={this.addToPassport} />
-        {/* <Route path="/explore">
-          <Explore add={this.addToPassport} />
-        </Route> */}
       </div>
     );
   }
