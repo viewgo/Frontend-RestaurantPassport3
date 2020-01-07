@@ -47,6 +47,51 @@
   margin: 10px 10px;
 }
 
+.signup-form {
+  border: 2px dotted black;
+  width: 35%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.signup-form .signup-label-fname {
+  border: 1px solid pink;
+  margin: auto;
+}
+
+.signup-form .signup-label-lname {
+  border: 1px solid red;
+}
+
+.signup-form .signup-label-email {
+  border: 1px solid orange;
+}
+
+.signup-form .signup-label-password {
+  border: 1px solid purple;
+}
+
+.signup-form .signup-label-location {
+  border: 1px solid green;
+}
+
+.signup-form .signup-label-remember {
+  border: 1px solid blue;
+}
+
+.signup-form .signup-submitBtn {
+  color: green;
+  background: blue;
+}
+
 .error {
   color: red;
 }
