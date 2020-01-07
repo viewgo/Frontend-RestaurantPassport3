@@ -115,19 +115,7 @@ class App extends Component {
           />
         </Route>
         <Route path="/passport-form">
-          {/*//! fix prop here  */}
-          <PassportForm
-          // date={this.state.passport[0].date}
-          // name={this.state.passport[0].name}
-          // address={this.state.passport[0].address}
-          // city={this.state.passport[0].city}
-          // zip={this.state.passport[0].zip}
-          // number={this.state.passport[0].number}
-          // website={this.state.passport[0].website}
-          // rating={this.state.passport[0].rating}
-          // notes={this.state.passport[0].notes}
-          // stamped={this.state.passport[0].stamped}
-          />
+          <PassportForm />
         </Route>
         <PrivateRoute
           exact
