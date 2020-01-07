@@ -6,6 +6,13 @@ import axiosWithAuth from "../utils/index";
 
 function PassportForm({ values, errors, touched, isSubmitting }) {
   console.log("values", values);
+
+  var dateObj = new Date();
+  var month = dateObj.getUTCMonth() + 1;
+  var day = dateObj.getUTCDate();
+  var year = dateObj.getUTCFullYear();
+  const newDate = `${month}/${day}/${year}`;
+
   return (
     // <div className="entry-form">
     <Form>
@@ -18,7 +25,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
         name="date"
         placeholder="Date"
         type="text"
-        value={values.date || Date()}
+        value={values.date || newDate}
       />
       {/* </label> */}
       {/* <label name="name" className="entry-label-name"> */}{" "}
