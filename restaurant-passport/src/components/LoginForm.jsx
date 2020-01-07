@@ -4,8 +4,11 @@ import * as yup from "yup";
 
 import axiosWithAuth from "../utils";
 
-function Login({ errors, touched, values, isSubmitting }) {
-  // console.log("values", values);
+function Login( { errors, touched, values, isSubmitting } ) {
+  
+
+  console.log("values", values);
+  
   return (
     <div className="login-form">
       <Form>
@@ -129,9 +132,12 @@ const FormikLogin = withFormik({
       axiosWithAuth()
         .post("/auth/login", credentials)
         .then(res => {
-          console.log(res);
-          localStorage.setItem("token", res.data.token);
+          console.log("Login res", res);
+          localStorage.setItem('token', res.data.token);
+          localStorage.setItem('user_id', res.data.user_id)
           setSubmitting(false);
+          // console.log(history)
+          res.history.push('/passport');
         })
         .catch(res => console.log(res))
         .finally(resetForm());
