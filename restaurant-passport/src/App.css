@@ -224,6 +224,12 @@ form .login-submitBtn {
       justify-content: space-around;
 }
 
+.restaurant-card-back img {
+  height: 100px;
+  width: 100px;
+  margin: 5px auto;
+}
+
 .restaurant-card-back h3 {
   color: blue;
 }
@@ -241,6 +247,11 @@ form .login-submitBtn {
 }
 
 .restaurant-card-back .card-back-number {
+  color: aquamarine;
+}
+
+.restaurant-card-back .card-back-number a {
+  text-decoration: none;
   color: aquamarine;
 }
 

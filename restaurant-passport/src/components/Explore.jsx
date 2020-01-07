@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 //todo add new restaurants to state here
-//https://rpass.herokuapp.com/api/explore?search=chinese&location=newyork
+
 function Explore({ add }) {
   const [localList, setLocalList] = useState([]);
   const [input, setInput] = useState({

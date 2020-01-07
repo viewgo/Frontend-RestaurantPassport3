@@ -10,6 +10,11 @@ function Restaurant({ restaurant, setFlipped }) {
           id={restaurant.date}
           onClick={() => setFlipped()}
         >
+          <img
+            className="explore-img"
+            src={restaurant.img_url}
+            alt={restaurant.name}
+          />
           <h3>{restaurant.name}</h3>
           <p>{restaurant.city}</p>
           <p>{restaurant.rating}</p>
@@ -21,13 +26,23 @@ function Restaurant({ restaurant, setFlipped }) {
     return (
       <>
         <div className="restaurant-card-back">
+          <img
+            className="card-back-img"
+            src={restaurant.img_url}
+            alt={restaurant.name}
+          />
           <h3>{restaurant.name}</h3>
           <p className="card-back-date">Date: {restaurant.date} </p>
           <p className="card-back-address">
             {restaurant.address} {restaurant.city}, {restaurant.state}{" "}
             {restaurant.zipcode}
           </p>
-          <p className="card-back-number">Number: {restaurant.phone_number}</p>
+          <p className="card-back-number">
+            Tel:{" "}
+            <a href="tel:{restaurant.phone_number}">
+              {restaurant.phone_number}
+            </a>
+          </p>
           <p className="card-back-website">
             <a href={restaurant.website_url}>Website</a>
           </p>
@@ -41,16 +56,3 @@ function Restaurant({ restaurant, setFlipped }) {
 }
 
 export default Restaurant;
-
-// {
-//         date: "",
-//         name: "",
-//         address: "",
-//         city: "",
-//         zip: "",
-//         number: "",
-//         website: "",
-//         rating: "",
-//         notes: "",
-//         stamped: ""
-//       }
