@@ -10,10 +10,10 @@ function Restaurant({ restaurant, setFlipped }) {
           id={restaurant.date}
           onClick={() => setFlipped()}
         >
-          <h3>Name: {restaurant.name}</h3>
-          <p>City: {restaurant.city}</p>
-          <p>Rating: {restaurant.rating}</p>
-          <p>Stamped: {restaurant.stamped}</p>
+          <h3>{restaurant.name}</h3>
+          <p>{restaurant.city}</p>
+          <p>{restaurant.rating}</p>
+          <p>{restaurant.stamped}</p>
         </div>
       </>
     );
@@ -21,19 +21,19 @@ function Restaurant({ restaurant, setFlipped }) {
     return (
       <>
         <div className="restaurant-card-back">
-          <h3>Name: {restaurant.name}</h3>
-          <p>Date: {restaurant.date} </p>
-          <p>
-            Address: {restaurant.address} {restaurant.city}, {restaurant.state}{" "}
+          <h3>{restaurant.name}</h3>
+          <p className="card-back-date">Date: {restaurant.date} </p>
+          <p className="card-back-address">
+            {restaurant.address} {restaurant.city}, {restaurant.state}{" "}
             {restaurant.zipcode}
           </p>
-          <p>Number: {restaurant.phone_number}</p>
-          <p>
+          <p className="card-back-number">Number: {restaurant.phone_number}</p>
+          <p className="card-back-website">
             <a href={restaurant.website_url}>Website</a>
           </p>
-          <p>Rating: {restaurant.rating}</p>
-          <p>Notes: {restaurant.notes}</p>
-          <p>Stamped: {restaurant.stamped}</p>
+          <p className="card-back-rating">Rating: {restaurant.rating}</p>
+          <p className="card-back-notes">Notes: {restaurant.notes}</p>
+          <p className="card-back-stamped">Stamped: {restaurant.stamped}</p>
         </div>
       </>
     );
