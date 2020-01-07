@@ -13,22 +13,31 @@ function Passport({ passport, setFlipped }) {
   const [search, setSearch] = useState(true);
   useEffect(() => {
     axiosWithAuth()
-      .get(
-        `https://rpass.herokuapp.com/api/users/${user_id}/passport?search=${input.search}`
-      )
+      .get(`https://rpass.herokuapp.com/api/users/${user_id}/passport`)
       .then(res => {
         console.log("passport", res.data);
         setList(res.data);
       })
       .catch(err => console.log(err));
-  }, [search]);
+  }, []);
+
+  // useEffect(() => {
+  //   axiosWithAuth()
+  //     //  todo get searching endpoint here
+  //     .get(`search endpoint`)
+  //     .then(res => {
+  //       console.log("passportSearch", res.data);
+  //       setList(res.data);
+  //     })
+  //     .catch(err => console.log(err));
+  // }, [search]);
 
   const onFormSubmit = evt => {
     evt.preventDefault();
-    // setInput({
-    //   search: ""
-    // });
     setSearch(!search);
+    setInput({
+      search: ""
+    });
   };
   const onChangeHandler = e => {
     setInput({

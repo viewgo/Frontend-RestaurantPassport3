@@ -65,10 +65,6 @@ class App extends Component {
     localStorage.setItem(item, JSON.stringify(value));
   };
 
-  setFlipped = evt => {
-    console.log("flipped");
-  };
-
   addToPassport = restaurant => {
     console.log("added to restaurant", restaurant);
     const newRestaurant = {
@@ -83,17 +79,7 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  //   componentDidMount() {
-  //     console.log("storage", localStorage);
-  //     this.setState({
-  //       rememberMe: this.localStorageGet("passportRemember") || false,
-  //       rememberEmail: this.localStorageGet("passportEmail") || "",
-  //       rememberPassword: this.localStorageGet("passportPassword") || ""
-  //     });
-  //   }
-
   render() {
-    // console.log("State", this.state);
     return (
       <div className="App">
         <Route path="/">
@@ -122,7 +108,6 @@ class App extends Component {
           path="/passport"
           component={Passport}
           passport={this.state.passport}
-          setFlipped={this.setFlipped}
         />
         <PrivateRoute
           exact
