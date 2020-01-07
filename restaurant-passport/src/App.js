@@ -65,10 +65,6 @@ class App extends Component {
     localStorage.setItem(item, JSON.stringify(value));
   };
 
-  setFlipped = evt => {
-    console.log("flipped");
-  };
-
   addToPassport = restaurant => {
     console.log("added to restaurant", restaurant);
     const newRestaurant = {
@@ -83,17 +79,7 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  //   componentDidMount() {
-  //     console.log("storage", localStorage);
-  //     this.setState({
-  //       rememberMe: this.localStorageGet("passportRemember") || false,
-  //       rememberEmail: this.localStorageGet("passportEmail") || "",
-  //       rememberPassword: this.localStorageGet("passportPassword") || ""
-  //     });
-  //   }
-
   render() {
-    // console.log("State", this.state);
     return (
       <div className="App">
         <Route path="/">
@@ -115,26 +101,13 @@ class App extends Component {
           />
         </Route>
         <Route path="/passport-form">
-          {/*//! fix prop here  */}
-          <PassportForm
-          // date={this.state.passport[0].date}
-          // name={this.state.passport[0].name}
-          // address={this.state.passport[0].address}
-          // city={this.state.passport[0].city}
-          // zip={this.state.passport[0].zip}
-          // number={this.state.passport[0].number}
-          // website={this.state.passport[0].website}
-          // rating={this.state.passport[0].rating}
-          // notes={this.state.passport[0].notes}
-          // stamped={this.state.passport[0].stamped}
-          />
+          <PassportForm />
         </Route>
         <PrivateRoute
           exact
           path="/passport"
           component={Passport}
           passport={this.state.passport}
-          setFlipped={this.setFlipped}
         />
         <PrivateRoute
           exact
