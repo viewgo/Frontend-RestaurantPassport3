@@ -7,9 +7,11 @@ function Passport({ passport, setFlipped }) {
   const [passportList, setList] = useState([]);
   //todo save userID in local storage to allow request based on dynamic ID
 
+  const user_id = localStorage.getItem('user_id')
+
   useEffect(() => {
     axiosWithAuth()
-      .get(`https://rpass.herokuapp.com/api/users/5/passport`)
+      .get(`https://rpass.herokuapp.com/api/users/${user_id}/passport`)
       .then(res => {
         console.log(res);
         setList(res.data);
