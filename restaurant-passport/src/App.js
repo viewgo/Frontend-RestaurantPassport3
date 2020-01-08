@@ -70,6 +70,7 @@ class App extends Component {
     const newRestaurant = {
       restaurant_id: restaurant.id
     };
+    alert(`You have added ${restaurant.name} to your passport`);
     axiosWithAuth()
       .post(
         `https://rpass.herokuapp.com/api/users/${this.user_id}/passport`,
