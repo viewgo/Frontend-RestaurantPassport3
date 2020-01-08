@@ -2,16 +2,18 @@ import React from "react";
 import PassportEdit from "./PassportEdit";
 
 function Restaurant({ restaurant, setFlipped, deleteRestaurant, flipped }) {
-  console.log("restaurant", restaurant);
+  // console.log("restaurant", restaurant);
 
   if (flipped === false) {
     return (
       <>
-
-        <div className="restaurant-card-front" >
-          <PassportEdit values={restaurant} setFlipped={setFlipped} deleteRestaurant={deleteRestaurant} />
+        <div className="restaurant-card-front">
+          <PassportEdit
+            values={restaurant}
+            setFlipped={setFlipped}
+            deleteRestaurant={deleteRestaurant}
+          />
         </div>
-
       </>
     );
   } else {
@@ -52,7 +54,6 @@ function Restaurant({ restaurant, setFlipped, deleteRestaurant, flipped }) {
               Edit
             </button>
           </div>
-
         </div>
       </>
     );
