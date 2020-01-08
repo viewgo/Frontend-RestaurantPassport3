@@ -6,6 +6,13 @@ import axiosWithAuth from "../utils/index";
 
 function PassportForm({ values, errors, touched, isSubmitting }) {
   console.log("values", values);
+
+  var dateObj = new Date();
+  var month = dateObj.getUTCMonth() + 1;
+  var day = dateObj.getUTCDate();
+  var year = dateObj.getUTCFullYear();
+  const newDate = `${month}/${day}/${year}`;
+
   return (
     // <div className="entry-form">
     <Form>
@@ -18,7 +25,7 @@ function PassportForm({ values, errors, touched, isSubmitting }) {
         name="date"
         placeholder="Date"
         type="text"
-        value={values.date || Date()}
+        value={values.date || newDate}
       />
       {/* </label> */}
       {/* <label name="name" className="entry-label-name"> */}{" "}
@@ -218,6 +225,7 @@ const FormikPassportForm = withFormik({
       stamped: newRestaurant.stamped,
       rating: newRestaurant.rating
     };
+<<<<<<< HEAD
     setTimeout(() => {
       console.log(newRestaurant);
       const user_id = localStorage.getItem('user_id')
@@ -246,6 +254,34 @@ const FormikPassportForm = withFormik({
         .catch(err => console.log("Error", err))
         .finally(resetForm());
     }, 500);
+=======
+    console.log(newRestaurant);
+    const user_id = localStorage.getItem("user_id");
+    axios
+      .post("https://rpass.herokuapp.com/api/restaurants", newRestaurant)
+      .then(res => {
+        console.log("post", res);
+        setSubmitting(false);
+        axiosWithAuth()
+          .post(
+            `https://rpass.herokuapp.com/api/users/${user_id}/passport`,
+            newRestaurantId
+          )
+          .then(res => {
+            console.log("newTestPost", res);
+            axiosWithAuth()
+              .put(
+                `https://rpass.herokuapp.com/api/users/${user_id}/passport`,
+                restaurantPut
+              )
+              .then(res => console.log("newTestPut", res))
+              .catch(err => console.log(err));
+          })
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log("Error", err))
+      .finally(resetForm());
+>>>>>>> fddc76a2daa6687884ac261701db3af0abca10f6
   }
 })(PassportForm);
 export default FormikPassportForm;

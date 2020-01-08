@@ -198,4 +198,80 @@ form .login-submitBtn {
   margin: 3px auto;
   background: lightblue;
 }
+
+.passport-list {
+  width: 98%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.restaurant-card-back {
+  border: 2px solid purple;
+  width: 45%;
+  margin: 10px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.restaurant-card-back img {
+  height: 100px;
+  width: 100px;
+  margin: 5px auto;
+}
+
+.restaurant-card-back h3 {
+  color: blue;
+}
+
+.restaurant-card-back p {
+  margin: 5px auto;
+}
+
+.restaurant-card-back .card-back-date {
+  color: greenyellow;
+}
+
+.restaurant-card-back .card-back-address {
+  color: blue;
+}
+
+.restaurant-card-back .card-back-number {
+  color: aquamarine;
+}
+
+.restaurant-card-back .card-back-number a {
+  text-decoration: none;
+  color: aquamarine;
+}
+
+.restaurant-card-back .card-back-website {
+  color: red;
+}
+
+.restaurant-card-back .card-back-website a {
+  text-decoration: none;
+}
+
+.restaurant-card-back .card-back-rating {
+  color: purple;
+}
+
+.restaurant-card-back .card-back-notes {
+  color: lightblue;
+}
+
+.restaurant-card-back .card-back-stamped {
+  color: grey;
+}
 /*# sourceMappingURL=App.css.map */
