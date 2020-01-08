@@ -231,6 +231,21 @@ form .login-submitBtn {
   margin: auto;
 }
 
+.restaurant-card-front {
+  width: 45%;
+  margin: 10px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 .restaurant-card-back {
   border: 3.2px solid purple;
   width: 45%;
@@ -279,10 +294,15 @@ form .login-submitBtn {
   color: coral;
 }
 
+.restaurant-card-back .passport-btn-div .passport-btn-cancel {
+  color: lightgreen;
+}
+
 .restaurant-edit {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 80%;
 }
 
 .restaurant-edit img {
@@ -332,6 +352,10 @@ form .login-submitBtn {
   color: lightblue;
 }
 
+.restaurant-edit .restaurant-edit-notes-input {
+  border: .5px solid black;
+}
+
 .restaurant-edit .restaurant-edit-rating-label {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -345,6 +369,7 @@ form .login-submitBtn {
 
 .restaurant-edit .restaurant-edit-rating-label input {
   width: 20%;
+  border: .5px solid black;
 }
 
 .restaurant-edit .restaurant-edit-stamped-label {
