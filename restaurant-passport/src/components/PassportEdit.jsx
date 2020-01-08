@@ -46,28 +46,31 @@ function PassportEdit(props) {
       .catch(err => console.log(err));
   };
 
-  const onClickDelete = (e) => {
+  const onClickDelete = e => {
     e.preventDefault();
     props.deleteRestaurant(props.values.restaurant_id);
-    props.setFlipped(true)
-  }
-  
-  const onClickCan = (e) => {
+    props.setFlipped(true);
+  };
+
+  const onClickCan = e => {
     e.preventDefault();
-    props.setFlipped(true)
-  }
+    props.setFlipped(true);
+  };
 
   return (
     <div className="restaurant-card-back restaurant-edit">
       <h3>{props.values.name}</h3>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="notes">Notes: </label>
-        <input
-          type="text"
-          name="notes"
-          value={passportEdit.notes}
-          onChange={changeHandler}
-        />
+        <label htmlFor="notes">
+          Notes:
+          <input
+            className="restaurant-edit-notes-input"
+            type="text"
+            name="notes"
+            value={passportEdit.notes}
+            onChange={changeHandler}
+          />
+        </label>
         <label htmlFor="rating" className="restaurant-edit-rating-label">
           Rating:
           <input
@@ -86,9 +89,20 @@ function PassportEdit(props) {
             onChange={changeHandlerCheck}
           />
         </label>
-        <button type="submit">Update</button>
-        <button onClick={(e) => onClickDelete(e)} >Delete</button>
-        <button onClick={(e) => onClickCan(e)} >X</button>
+        <div className="passport-btn-div">
+          <button className="passport-btn-edit" type="submit">
+            Update
+          </button>
+          <button
+            className="passport-btn-delete"
+            onClick={e => onClickDelete(e)}
+          >
+            Delete
+          </button>
+          <button className="passport-btn-cancel" onClick={e => onClickCan(e)}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

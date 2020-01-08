@@ -155,6 +155,14 @@ form
     flex-wrap: wrap
     margin: auto
 
+.restaurant-card-front
+    width: 45%
+    margin: 10px auto
+    display: flex
+    flex-direction: column
+    text-align: center
+    justify-content: space-around
+
 .restaurant-card-back
     border: 3.2px solid purple
     width: 45%
@@ -188,8 +196,12 @@ form
         .passport-btn-delete
             color: coral
 
+        .passport-btn-cancel
+            color: lightgreen
+
 .restaurant-edit
     display: flex
+    width: 80%
     // flex-direction: row
 
     img
@@ -220,6 +232,8 @@ form
         color: purple
     .card-back-notes
         color: lightblue
+    .restaurant-edit-notes-input
+        border: .5px solid black
 
     .restaurant-edit-rating-label
         display: flex
@@ -230,6 +244,7 @@ form
         input
             width: 20%
             // margin-left: 10%
+            border: .5px solid black
 
     .restaurant-edit-stamped-label
         display: flex
