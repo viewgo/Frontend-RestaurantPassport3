@@ -10,7 +10,7 @@ function PassportEdit(props) {
     restaurant_id: props.values.restaurant_id,
     notes: "",
     rating: "",
-    stamped: ""
+    stamped: null
   });
 
   const changeHandler = e => {
