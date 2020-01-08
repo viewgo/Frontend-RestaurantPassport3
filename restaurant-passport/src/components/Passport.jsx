@@ -3,8 +3,7 @@ import Restaurant from "./Restaurant";
 import axiosWithAuth from "../utils/index";
 
 
-function Passport({ passport, setFlipped, flipped }) {
-  console.log(passport);
+function Passport({ setFlipped, flipped }) {
 
   const [passportList, setList] = useState([]);
   const user_id = localStorage.getItem("user_id");
@@ -16,7 +15,7 @@ function Passport({ passport, setFlipped, flipped }) {
     axiosWithAuth()
       .get(`https://rpass.herokuapp.com/api/users/${user_id}/passport`)
       .then(res => {
-        console.log("passport", res.data);
+        // console.log("passport", res.data);
         setList(res.data);
       })
       .catch(err => console.log(err));
@@ -29,7 +28,7 @@ function Passport({ passport, setFlipped, flipped }) {
       .then(res => {
         console.log(res);
         console.log(id);
-        this.props.history.push('/passport')
+        this.props.history.push('/passport');
       })
       .catch(err => {
         console.log(err.message);
