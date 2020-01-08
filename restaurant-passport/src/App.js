@@ -90,7 +90,7 @@ class App extends Component {
         <Route path="/passport-form">
           <PassportForm />
         </Route>
-        <PrivateRoute exact path="/passport" component={Passport} passport={this.state.passport} setFlipped={this.setFlipped} flipped={this.state.flipped} />
+        <PrivateRoute exact path="/passport" component={Passport} setFlipped={this.setFlipped} flipped={this.state.flipped} />
         <PrivateRoute exact path="/explore" component={Explore} add={this.addToPassport} />
       </div>
     );

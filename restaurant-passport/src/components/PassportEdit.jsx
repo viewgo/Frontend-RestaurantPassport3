@@ -47,6 +47,12 @@ function PassportEdit(props) {
         .catch(err => console.log(err))
   };
 
+  const onClickDelete = (e) => {
+    e.preventDefault();
+    props.deleteRestaurant(props.values.restaurant_id);
+    props.setFlipped(true)
+  }
+
   return (
     <div>
         <h3>{props.values.name}</h3>
@@ -58,6 +64,7 @@ function PassportEdit(props) {
             <label htmlFor='stamped'>Stamped: </label>
             <input type='checkbox' name='stamped' value={passportEdit.stamped} onChange={changeHandlerCheck} />
             <button type='submit'>Update</button>
+            <button onClick={(e) => onClickDelete(e)} >Delete</button>
         </form>
     </div>
   );

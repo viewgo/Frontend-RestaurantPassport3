@@ -4,16 +4,12 @@ import PassportEdit from "./PassportEdit";
 function Restaurant({ restaurant, setFlipped, deleteRestaurant, flipped }) {
   console.log("restaurant", restaurant);
 
-  const onClickDelete = (e) => {
-    e.preventDefault();
-    deleteRestaurant(restaurant.restaurant_id);
-  }
 
   if (flipped === false) {
     return (
       <>
         <div className="restaurant-card-front" >
-          <PassportEdit values={restaurant} setFlipped={setFlipped} />
+          <PassportEdit values={restaurant} setFlipped={setFlipped} deleteRestaurant={deleteRestaurant} />
         </div>
       </>
     );
@@ -44,7 +40,6 @@ function Restaurant({ restaurant, setFlipped, deleteRestaurant, flipped }) {
           <p className="card-back-rating">Rating: {restaurant.rating}</p>
           <p className="card-back-notes">Notes: {restaurant.notes}</p>
           <p className="card-back-stamped">Stamped: {restaurant.stamped}</p>
-          <button onClick={(e) => onClickDelete(e)} >Delete</button>
           <button onClick={() => setFlipped(false)} >Edit</button>
         </div>
       </>

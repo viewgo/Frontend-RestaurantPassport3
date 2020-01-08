@@ -25,6 +25,7 @@ function Explore({ add }) {
         });
       })
       .catch(err => console.log(err));
+      // eslint-disable-next-line
   }, [searchTest]);
 
   const onFormSubmit = evt => {
