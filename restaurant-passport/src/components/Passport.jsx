@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Restaurant from "./Restaurant";
-import axiosWithAuth from "../utils/index"
+import axiosWithAuth from "../utils/index";
 
 
 function Passport({ passport, setFlipped, flipped }) {
@@ -23,7 +23,7 @@ function Passport({ passport, setFlipped, flipped }) {
   const deleteRestaurant = id => {
     console.log(id)
     axiosWithAuth()
-      .delete(`/users/${user_id}/passport`, id)
+      .delete(`/users/${user_id}/passport/${id}`)
       .then(res => {
         console.log(res);
         console.log(id);

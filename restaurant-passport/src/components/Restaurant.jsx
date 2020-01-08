@@ -6,7 +6,7 @@ function Restaurant({ restaurant, setFlipped, deleteRestaurant, flipped }) {
 
   const onClickDelete = (e) => {
     e.preventDefault();
-    deleteRestaurant({ "restaurant_id": restaurant.restaurant_id });
+    deleteRestaurant(restaurant.restaurant_id);
   }
 
   if (flipped === false) {
