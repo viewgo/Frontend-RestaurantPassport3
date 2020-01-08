@@ -4,6 +4,21 @@
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  padding: 1% 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #23374D;
+}
+
+.nav-container .nav-icon {
+  font-size: 2.57rem;
+}
+
+.nav-container a {
+  text-decoration: none;
+  color: #007F96;
+  font-size: 1.15rem;
 }
 
 form {
@@ -35,7 +50,7 @@ form .login-label-remember {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 85%;
+  width: 32%;
   margin: 5px auto;
 }
 
@@ -65,6 +80,13 @@ form .login-submitBtn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 32%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .signup-label-btn {
@@ -142,7 +164,7 @@ form .login-submitBtn {
 }
 
 .explore-list .explore-card {
-  border: 2px solid green;
+  border: 3.2px solid green;
   width: 45%;
   margin: 10px auto;
   display: -webkit-box;
@@ -206,10 +228,11 @@ form .login-submitBtn {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: auto;
 }
 
 .restaurant-card-back {
-  border: 2px solid purple;
+  border: 3.2px solid purple;
   width: 45%;
   margin: 10px auto;
   display: -webkit-box;
@@ -230,48 +253,113 @@ form .login-submitBtn {
   margin: 5px auto;
 }
 
-.restaurant-card-back h3 {
+.restaurant-card-back p {
+  margin: 5px;
+}
+
+.restaurant-card-back .passport-btn-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.restaurant-card-back .passport-btn-div button {
+  font-size: 1.2rem;
+  width: 32%;
+  margin: 7px auto;
+}
+
+.restaurant-card-back .passport-btn-div .passport-btn-edit {
   color: blue;
 }
 
-.restaurant-card-back p {
+.restaurant-card-back .passport-btn-div .passport-btn-delete {
+  color: coral;
+}
+
+.restaurant-edit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.restaurant-edit img {
+  height: 100px;
+  width: 100px;
   margin: 5px auto;
 }
 
-.restaurant-card-back .card-back-date {
-  color: greenyellow;
-}
-
-.restaurant-card-back .card-back-address {
+.restaurant-edit h3 {
   color: blue;
 }
 
-.restaurant-card-back .card-back-number {
+.restaurant-edit p {
+  margin: 5px auto;
+}
+
+.restaurant-edit .card-back-date {
+  color: greenyellow;
+}
+
+.restaurant-edit .card-back-address {
+  color: blue;
+}
+
+.restaurant-edit .card-back-number {
   color: aquamarine;
 }
 
-.restaurant-card-back .card-back-number a {
+.restaurant-edit .card-back-number a {
   text-decoration: none;
   color: aquamarine;
 }
 
-.restaurant-card-back .card-back-website {
+.restaurant-edit .card-back-website {
   color: red;
 }
 
-.restaurant-card-back .card-back-website a {
+.restaurant-edit .card-back-website a {
   text-decoration: none;
 }
 
-.restaurant-card-back .card-back-rating {
+.restaurant-edit .card-back-rating {
   color: purple;
 }
 
-.restaurant-card-back .card-back-notes {
+.restaurant-edit .card-back-notes {
   color: lightblue;
 }
 
-.restaurant-card-back .card-back-stamped {
+.restaurant-edit .restaurant-edit-rating-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px auto;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 35%;
+}
+
+.restaurant-edit .restaurant-edit-rating-label input {
+  width: 20%;
+}
+
+.restaurant-edit .restaurant-edit-stamped-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 4px auto;
+}
+
+.restaurant-edit .card-back-stamped {
   color: grey;
+}
+
+.restaurant-edit button {
+  width: 75%;
+  margin: auto;
 }
 /*# sourceMappingURL=App.css.map */

@@ -4,13 +4,14 @@ import PassportEdit from "./PassportEdit";
 function Restaurant({ restaurant, setFlipped, deleteRestaurant, flipped }) {
   console.log("restaurant", restaurant);
 
-
   if (flipped === false) {
     return (
       <>
+
         <div className="restaurant-card-front" >
           <PassportEdit values={restaurant} setFlipped={setFlipped} deleteRestaurant={deleteRestaurant} />
         </div>
+
       </>
     );
   } else {
@@ -39,8 +40,25 @@ function Restaurant({ restaurant, setFlipped, deleteRestaurant, flipped }) {
           </p>
           <p className="card-back-rating">Rating: {restaurant.rating}</p>
           <p className="card-back-notes">Notes: {restaurant.notes}</p>
-          <p className="card-back-stamped">Stamped: {restaurant.stamped}</p>
-          <button onClick={() => setFlipped(false)} >Edit</button>
+
+          <p className="card-back-stamped">
+            Stamped: {JSON.stringify(restaurant.stamped)}
+          </p>
+          <div className="passport-btn-div">
+            <button
+              className="passport-btn-edit"
+              onClick={() => setFlipped(false)}
+            >
+              Edit
+            </button>
+            <button
+              className="passport-btn-delete"
+              onClick={e => onClickDelete(e)}
+            >
+              Delete
+            </button>
+          </div>
+
         </div>
       </>
     );
