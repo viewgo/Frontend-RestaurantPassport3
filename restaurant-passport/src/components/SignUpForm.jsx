@@ -120,7 +120,7 @@ const FormikSignUp = withFormik({
       .required("Password is required"),
     location: yup.string().required("Please enter a city or zip")
   }),
-  handleSubmit(values, { resetForm, setSubmitting }) {
+  handleSubmit(values, { resetForm, setSubmitting, props }) {
     console.log("SubmitValues", values);
 
     // Creating payload for login using axiosWithAuth
@@ -150,6 +150,7 @@ const FormikSignUp = withFormik({
         .then(res => {
           console.log(res);
           setSubmitting(false);
+          props.props.history.push('/login');
         })
         .catch(err => console.log(err))
         .finally(resetForm());

@@ -1,24 +1,19 @@
 import React from "react";
+import PassportEdit from "./PassportEdit";
 
-function Restaurant({ restaurant, setFlipped }) {
-  console.log("rest", restaurant);
-  if (restaurant.flipped === false) {
+function Restaurant({ restaurant, setFlipped, deleteRestaurant, flipped }) {
+  console.log("restaurant", restaurant);
+
+  const onClickDelete = (e) => {
+    e.preventDefault();
+    deleteRestaurant(restaurant.restaurant_id);
+  }
+
+  if (flipped === false) {
     return (
       <>
-        <div
-          className="restaurant-card-front"
-          id={restaurant.date}
-          onClick={() => setFlipped()}
-        >
-          <img
-            className="explore-img"
-            src={restaurant.img_url}
-            alt={restaurant.name}
-          />
-          <h3>{restaurant.name}</h3>
-          <p>{restaurant.city}</p>
-          <p>{restaurant.rating}</p>
-          <p>{restaurant.stamped}</p>
+        <div className="restaurant-card-front" >
+          <PassportEdit values={restaurant} setFlipped={setFlipped} />
         </div>
       </>
     );
@@ -49,6 +44,8 @@ function Restaurant({ restaurant, setFlipped }) {
           <p className="card-back-rating">Rating: {restaurant.rating}</p>
           <p className="card-back-notes">Notes: {restaurant.notes}</p>
           <p className="card-back-stamped">Stamped: {restaurant.stamped}</p>
+          <button onClick={(e) => onClickDelete(e)} >Delete</button>
+          <button onClick={() => setFlipped(false)} >Edit</button>
         </div>
       </>
     );

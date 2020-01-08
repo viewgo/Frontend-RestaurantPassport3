@@ -90,8 +90,9 @@ const FormikLogin = withFormik({
       .required("Password Required"),
     remember: yup.boolean().required()
   }),
-  handleSubmit(values, { resetForm, setSubmitting }) {
-    console.log("SubmitValues", values);
+  handleSubmit(values, { resetForm, setSubmitting, props }) {
+    // console.log("SubmitValues", values);
+    // console.log("props inside withFormik", props)
     // * SET LOCAL STORAGE BASED ON REMEMBER email and password changes
 
     // Creating payload for login using axiosWithAuth
@@ -116,29 +117,31 @@ const FormikLogin = withFormik({
       (values.getStorage("passportEmail") !== values.email ||
         values.getStorage("passportPassword") !== values.password)
     ) {
-      console.log("changed Storage");
+      // console.log("changed Storage");
       values.setStorage("passportRemember", true);
       values.setStorage("passportEmail", values.email);
       values.setStorage("passportPassword", values.password);
     } else if (values.remember === false) {
-      console.log("Remove Storage");
+      // console.log("Remove Storage");
       values.setStorage("passportRemember", false);
       values.setStorage("passportEmail", "");
       values.setStorage("passportPassword", "");
     }
 
-    axiosWithAuth()
-      .post("/auth/login", credentials)
-      .then(res => {
-        console.log("Login res", res);
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user_id", res.data.user_id);
-        setSubmitting(false);
-        // console.log(history)
-        res.history.push("/passport");
-      })
-      .catch(res => console.log(res))
-      .finally(resetForm());
+    setTimeout(() => {
+      axiosWithAuth()
+        .post("/auth/login", credentials)
+        .then(res => {
+          // console.log("Login res", res);
+          localStorage.setItem('token', res.data.token);
+          localStorage.setItem('user_id', res.data.user_id)
+          setSubmitting(false);
+          // console.log(props)
+          props.props.history.push('/passport');
+        })
+        .catch(res => console.log(res))
+        .finally(resetForm());
+    }, 1000);
   }
 })(Login);
 export default FormikLogin;

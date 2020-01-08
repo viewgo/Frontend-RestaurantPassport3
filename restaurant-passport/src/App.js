@@ -17,33 +17,8 @@ class App extends Component {
   state = {
     rememberMe: "",
     rememberEmail: "",
-    rememberPassword: ""
-    // users: [
-    //   {
-    //     firstName: "",
-    //     lastName: "",
-    //     email: "",
-    //     password: "",
-    //     location: "",
-    //     remember: ""
-    //   }
-    // ],
-
-    // passport: [
-    //   {
-    //     date: "12/25/19",
-    //     name: "Teals Seafood Market",
-    //     address: "OPeeDee River Way",
-    //     city: "Cheraw",
-    //     zip: "094234",
-    //     number: "801-489-4729",
-    //     website: "www.none.com",
-    //     rating: "5",
-    //     notes: "Best teal burger you will ever find",
-    //     stamped: "true",
-    //     flipped: false
-    //   }
-    // ]
+    rememberPassword: "",
+    flipped: true
   };
 
   user_id = localStorage.getItem("user_id");
@@ -56,6 +31,7 @@ class App extends Component {
       rememberPassword: this.localStorageGet("passportPassword") || ""
     });
   }
+
   localStorageGet = item =>
     // console.log("LSG", item)
     JSON.parse(localStorage.getItem(item));
@@ -63,6 +39,15 @@ class App extends Component {
   localStorageSet = (item, value) => {
     // console.log("localStorageSet", item, value);
     localStorage.setItem(item, JSON.stringify(value));
+  };
+
+  setFlipped = e => {
+    this.setState({flipped: e})
+    // console.log(this.state.passport[0]);
+    // this.setState(...{
+    // });
+    // console.log(e);
+    // console.log("flipped");
   };
 
   addToPassport = restaurant => {
@@ -86,39 +71,27 @@ class App extends Component {
         <Route path="/">
           <Navigation />
         </Route>
-        <Route path="/signup">
-          <SignUpForm
+
+        <Route exact path="/signup" render={(props) => (<SignUpForm
+            props={props}
             setLocalStorage={this.localStorageSet}
             getLocalStorage={this.localStorageGet}
-          />
-        </Route>
-        <Route path="/login">
-          <LoginForm
+        />)} />
+
+        <Route exact path="/login" render={(props) => (<LoginForm
+            props={props}
             setLocalStorage={this.localStorageSet}
             getLocalStorage={this.localStorageGet}
             remember={this.state.rememberMe}
             email={this.state.rememberEmail}
             password={this.state.rememberPassword}
-          />
-        </Route>
+        />)} />
+
         <Route path="/passport-form">
           <PassportForm />
         </Route>
-        <PrivateRoute
-          exact
-          path="/passport"
-          component={Passport}
-          passport={this.state.passport}
-        />
-        <PrivateRoute
-          exact
-          path="/explore"
-          component={Explore}
-          add={this.addToPassport}
-        />
-        {/* <Route path="/explore">
-          <Explore add={this.addToPassport} />
-        </Route> */}
+        <PrivateRoute exact path="/passport" component={Passport} passport={this.state.passport} setFlipped={this.setFlipped} flipped={this.state.flipped} />
+        <PrivateRoute exact path="/explore" component={Explore} add={this.addToPassport} />
       </div>
     );
   }

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Restaurant from "./Restaurant";
 import axiosWithAuth from "../utils/index";
 
-function Passport({ passport, setFlipped }) {
+
+function Passport({ passport, setFlipped, flipped }) {
   console.log(passport);
 
   const [passportList, setList] = useState([]);
@@ -19,7 +20,21 @@ function Passport({ passport, setFlipped }) {
         setList(res.data);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [user_id, flipped]);
+
+  const deleteRestaurant = id => {
+    console.log(id)
+    axiosWithAuth()
+      .delete(`/users/${user_id}/passport/${id}`)
+      .then(res => {
+        console.log(res);
+        console.log(id);
+        this.props.history.push('/passport')
+      })
+      .catch(err => {
+        console.log(err.message);
+      })
+  }
 
   // useEffect(() => {
   //   axiosWithAuth()
@@ -62,7 +77,7 @@ function Passport({ passport, setFlipped }) {
       </form>
       <div className="passport-list">
         {passportList.map(e => (
-          <Restaurant restaurant={e} setFlipped={setFlipped} />
+          <Restaurant restaurant={e} setFlipped={setFlipped} deleteRestaurant={deleteRestaurant} flipped={flipped} />
         ))}
       </div>
     </>
