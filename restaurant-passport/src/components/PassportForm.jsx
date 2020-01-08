@@ -207,6 +207,7 @@ const FormikPassportForm = withFormik({
   handleSubmit(values, { resetForm, setSubmitting }) {
     console.log("SubmitValues", values);
     const newRestaurant = {
+      id: Date.now(),
       name: values.name,
       address: values.address,
       city: values.city,
