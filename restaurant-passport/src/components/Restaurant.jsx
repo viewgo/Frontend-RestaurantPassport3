@@ -51,12 +51,6 @@ function Restaurant({ restaurant, setFlipped, deleteRestaurant, flipped }) {
             >
               Edit
             </button>
-            <button
-              className="passport-btn-delete"
-              onClick={e => onClickDelete(e)}
-            >
-              Delete
-            </button>
           </div>
 
         </div>
