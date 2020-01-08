@@ -51,6 +51,11 @@ function PassportEdit(props) {
     props.deleteRestaurant(props.values.restaurant_id);
     props.setFlipped(true)
   }
+  
+  const onClickCan = (e) => {
+    e.preventDefault();
+    props.setFlipped(true)
+  }
 
   return (
     <div className="restaurant-card-back restaurant-edit">
@@ -82,6 +87,8 @@ function PassportEdit(props) {
           />
         </label>
         <button type="submit">Update</button>
+        <button onClick={(e) => onClickDelete(e)} >Delete</button>
+        <button onClick={(e) => onClickCan(e)} >X</button>
       </form>
     </div>
   );
