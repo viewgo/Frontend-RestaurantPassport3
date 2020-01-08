@@ -46,6 +46,12 @@ function PassportEdit(props) {
       .catch(err => console.log(err));
   };
 
+  const onClickDelete = (e) => {
+    e.preventDefault();
+    props.deleteRestaurant(props.values.restaurant_id);
+    props.setFlipped(true)
+  }
+
   return (
     <div className="restaurant-card-back restaurant-edit">
       <h3>{props.values.name}</h3>
