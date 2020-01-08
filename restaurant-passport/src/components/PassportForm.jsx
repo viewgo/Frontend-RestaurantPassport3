@@ -214,7 +214,7 @@ const FormikPassportForm = withFormik({
       zipcode: values.zip,
       phone_number: values.number,
       website_url: values.website,
-      img_url: "null"
+      img_url: null
     };
     const newRestaurantId = {
       restaurant_id: newRestaurant.id
