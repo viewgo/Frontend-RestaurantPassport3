@@ -1,0 +1,8 @@
+{
+    "version": 2,
+    "name": "restaurant-passport",
+    "builds": [{ "src": "restaurant-passport/package.json", "use": "@now/static-build", "config": {"distDir": "build"} }],
+    "routes": [
+        { "src": "/(.*)", "dest": "restaurant-passport/$1" }
+    ]
+}
