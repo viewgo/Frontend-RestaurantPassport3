@@ -3,14 +3,17 @@ import { NavLink } from "react-router-dom";
 
 function Navigation(props) {
   // nav w/ home, passport, explore,
+
   return (
     <div className="nav-container">
+      <i className="fas fa-utensils nav-icon" />
       <NavLink to="/">Home</NavLink>
       <NavLink to="/login">Login</NavLink>
       <NavLink to="/signup">SignUp</NavLink>
       <NavLink to="/passport-form">Entry</NavLink>
       <NavLink to="/passport">Passport</NavLink>
       <NavLink to="/explore">Explore</NavLink>
+      <NavLink to="/about">About Us</NavLink>
     </div>
   );
 }
