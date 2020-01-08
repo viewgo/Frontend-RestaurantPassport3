@@ -1,8 +1,17 @@
 .nav-container
     display: flex
     justify-content: space-around
+    padding: 1% 0
+    align-items: center
+    background: #23374D
+
     .nav-icon
-        font-size: 10rem
+        font-size: 2.57rem
+
+    a
+        text-decoration: none
+        color: #007F96
+        font-size: 1.15rem
 
 //! Login Form
 form
@@ -22,7 +31,7 @@ form
         border: 1px solid blue
         display: flex
         flex-direction: row
-        width: 85%
+        width: 32%
         margin: 5px auto
 
     .login-label-btn
@@ -42,6 +51,12 @@ form
     border: 1px solid blue
     margin: 5px auto
     display: flex
+    flex-direction: row
+    width: 32%
+    justify-content: space-around
+    // .signup-field-remember
+    //     width: 10%
+
 .signup-label-btn
     display: flex
     margin: 5px auto
@@ -98,7 +113,7 @@ form
     margin: auto
 
     .explore-card
-        border: 2px solid green
+        border: 3.2px solid green
         width: 45%
         margin: 10px auto
         display: flex
@@ -138,15 +153,44 @@ form
     width: 98%
     display: flex
     flex-wrap: wrap
+    margin: auto
 
 .restaurant-card-back
-    border: 2px solid purple
+    border: 3.2px solid purple
     width: 45%
     margin: 10px auto
     display: flex
     flex-direction: column
     text-align: center
     justify-content: space-around
+
+    img
+
+        height: 100px
+        width: 100px
+        margin: 5px auto
+
+    p
+        margin: 5px
+
+    .passport-btn-div
+        display: flex
+        justify-content: space-around
+
+        button
+            font-size: 1.2rem
+            width: 32%
+            margin: 7px auto
+
+        .passport-btn-edit
+            color: blue
+
+        .passport-btn-delete
+            color: coral
+
+.restaurant-edit
+    display: flex
+    // flex-direction: row
 
     img
         height: 100px
@@ -176,5 +220,23 @@ form
         color: purple
     .card-back-notes
         color: lightblue
+
+    .restaurant-edit-rating-label
+        display: flex
+        margin: 5px auto
+        justify-content: space-evenly
+        width: 35%
+
+        input
+            width: 20%
+            // margin-left: 10%
+
+    .restaurant-edit-stamped-label
+        display: flex
+        margin: 4px auto
     .card-back-stamped
         color: grey
+
+    button
+        width: 75%
+        margin: auto

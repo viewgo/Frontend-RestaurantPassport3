@@ -150,7 +150,7 @@ const FormikSignUp = withFormik({
         .then(res => {
           console.log(res);
           setSubmitting(false);
-          props.props.history.push('/login');
+          props.props.history.push("/login");
         })
         .catch(err => console.log(err))
         .finally(resetForm());

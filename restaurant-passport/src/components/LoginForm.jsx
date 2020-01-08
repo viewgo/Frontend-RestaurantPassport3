@@ -42,7 +42,7 @@ function Login({ errors, touched, values, isSubmitting }) {
           className="login-field-remember field"
           name="remember"
           type="checkbox"
-          placeholder={JSON.stringify(values.remember) || "false"}
+          placeholder="false"
         />
       </label>
       <label name="submitButton" className="login-label-btn">
@@ -133,11 +133,11 @@ const FormikLogin = withFormik({
         .post("/auth/login", credentials)
         .then(res => {
           // console.log("Login res", res);
-          localStorage.setItem('token', res.data.token);
-          localStorage.setItem('user_id', res.data.user_id)
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user_id", res.data.user_id);
           setSubmitting(false);
           // console.log(props)
-          props.props.history.push('/passport');
+          props.props.history.push("/passport");
         })
         .catch(res => console.log(res))
         .finally(resetForm());
