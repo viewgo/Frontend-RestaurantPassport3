@@ -225,7 +225,6 @@ const FormikPassportForm = withFormik({
       stamped: newRestaurant.stamped,
       rating: newRestaurant.rating
     };
-<<<<<<< HEAD
     setTimeout(() => {
       console.log(newRestaurant);
       const user_id = localStorage.getItem('user_id')
@@ -254,34 +253,6 @@ const FormikPassportForm = withFormik({
         .catch(err => console.log("Error", err))
         .finally(resetForm());
     }, 500);
-=======
-    console.log(newRestaurant);
-    const user_id = localStorage.getItem("user_id");
-    axios
-      .post("https://rpass.herokuapp.com/api/restaurants", newRestaurant)
-      .then(res => {
-        console.log("post", res);
-        setSubmitting(false);
-        axiosWithAuth()
-          .post(
-            `https://rpass.herokuapp.com/api/users/${user_id}/passport`,
-            newRestaurantId
-          )
-          .then(res => {
-            console.log("newTestPost", res);
-            axiosWithAuth()
-              .put(
-                `https://rpass.herokuapp.com/api/users/${user_id}/passport`,
-                restaurantPut
-              )
-              .then(res => console.log("newTestPut", res))
-              .catch(err => console.log(err));
-          })
-          .catch(err => console.log(err));
-      })
-      .catch(err => console.log("Error", err))
-      .finally(resetForm());
->>>>>>> fddc76a2daa6687884ac261701db3af0abca10f6
   }
 })(PassportForm);
 export default FormikPassportForm;

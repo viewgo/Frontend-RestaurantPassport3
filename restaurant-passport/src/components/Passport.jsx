@@ -62,13 +62,6 @@ function Passport({ passport, setFlipped, flipped }) {
   };
 
   return (
-<<<<<<< HEAD
-    <div>
-      {passportList.map(e => (
-          <Restaurant key={e.restaurant_id} restaurant={e} setFlipped={setFlipped} deleteRestaurant={deleteRestaurant} flipped={flipped} />
-      ))}
-    </div>
-=======
     <>
       <form onSubmit={onFormSubmit}>
         <input
@@ -84,11 +77,10 @@ function Passport({ passport, setFlipped, flipped }) {
       </form>
       <div className="passport-list">
         {passportList.map(e => (
-          <Restaurant restaurant={e} setFlipped={setFlipped} />
+          <Restaurant restaurant={e} setFlipped={setFlipped} deleteRestaurant={deleteRestaurant} flipped={flipped} />
         ))}
       </div>
     </>
->>>>>>> fddc76a2daa6687884ac261701db3af0abca10f6
   );
 }
 

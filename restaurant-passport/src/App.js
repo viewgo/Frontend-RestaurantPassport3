@@ -41,7 +41,6 @@ class App extends Component {
     localStorage.setItem(item, JSON.stringify(value));
   };
 
-<<<<<<< HEAD
   setFlipped = e => {
     this.setState({flipped: e})
     // console.log(this.state.passport[0]);
@@ -51,8 +50,6 @@ class App extends Component {
     // console.log("flipped");
   };
 
-=======
->>>>>>> fddc76a2daa6687884ac261701db3af0abca10f6
   addToPassport = restaurant => {
     console.log("added to restaurant", restaurant);
     const newRestaurant = {
@@ -67,10 +64,6 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> fddc76a2daa6687884ac261701db3af0abca10f6
   render() {
     return (
       <div className="App">
@@ -96,26 +89,8 @@ class App extends Component {
         <Route path="/passport-form">
           <PassportForm />
         </Route>
-<<<<<<< HEAD
         <PrivateRoute exact path="/passport" component={Passport} passport={this.state.passport} setFlipped={this.setFlipped} flipped={this.state.flipped} />
         <PrivateRoute exact path="/explore" component={Explore} add={this.addToPassport} />
-=======
-        <PrivateRoute
-          exact
-          path="/passport"
-          component={Passport}
-          passport={this.state.passport}
-        />
-        <PrivateRoute
-          exact
-          path="/explore"
-          component={Explore}
-          add={this.addToPassport}
-        />
-        {/* <Route path="/explore">
-          <Explore add={this.addToPassport} />
-        </Route> */}
->>>>>>> fddc76a2daa6687884ac261701db3af0abca10f6
       </div>
     );
   }
