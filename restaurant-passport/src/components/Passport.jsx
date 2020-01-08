@@ -40,11 +40,17 @@ function Passport({ setFlipped, flipped }) {
     input.search === ""
       ? setSearch(!search)
       : setList(
-          passportList.filter(e =>
-            e.name.toLowerCase().includes(input.search.toLowerCase())
-          )
+          passportList.filter(e => {
+            const values = Object.values(e);
+            console.log("values", values);
+            // return values.forEach(e =>
+            //   JSON.stringify(e)
+            //     .toLowerCase()
+            //     .includes(input.search.trim())
+            // );
+            return e.name.toLowerCase().includes(input.search.trim());
+          })
         );
-
     setInput({
       search: ""
     });
@@ -52,7 +58,7 @@ function Passport({ setFlipped, flipped }) {
   const onChangeHandler = e => {
     setInput({
       ...input,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value.toLowerCase()
     });
   };
 
