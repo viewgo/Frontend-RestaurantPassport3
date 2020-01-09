@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./App.css";
 import { Route } from "react-router-dom";
 import axiosWithAuth from "./utils";
@@ -12,7 +13,6 @@ import Passport from "./components/Passport";
 import Explore from "./components/Explore";
 
 class App extends Component {
-  //todo add state for storing registered people based on local storage changes of username, remove duplicate based on username change and if the password was the same.
 
   state = {
     rememberMe: "",
@@ -68,9 +68,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route path="/">
-          <Navigation />
-        </Route>
+        <Route path="/" 
+        render={(props) => (
+          <Navigation props={props} />
+        )} />
 
         <Route exact path="/signup" render={(props) => (<SignUpForm
             props={props}
@@ -97,6 +98,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+
+  }
+};
+
+export default connect(
+  mapStateToProps,
+    {
+      
+    }
+)(App);
 
 // date, name, address, city, zip, number, website, rating, notes stamped
