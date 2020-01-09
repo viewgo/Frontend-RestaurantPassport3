@@ -1,12 +1,11 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
+import { connect } from 'react-redux';
+import { register, login } from "../actions/actions";
 
-import axiosWithAuth from "../utils";
+function SignUp({ errors, touched, props }) {
 
-function SignUp({ errors, touched, isSubmitting }) {
-  // const {} = values;
-  // console.log(errors);
   return (
     <div className="signup-form">
       <Form>
@@ -84,10 +83,10 @@ function SignUp({ errors, touched, isSubmitting }) {
           <button
             name="submitBtn"
             type="submit"
-            disabled={isSubmitting}
+            disabled={props.loggingIn}
             className="signup-submitBtn"
           >
-            {!isSubmitting ? "Sign Up" : "Processing"}
+            {!props.loggingIn ? "Sign Up" : "Processing"}
           </button>
         </label>
       </Form>
@@ -95,7 +94,7 @@ function SignUp({ errors, touched, isSubmitting }) {
   );
 }
 
-const FormikSignUp = withFormik({
+const FormikSignUp1 = withFormik({
   mapPropsToValues({ setLocalStorage, getLocalStorage }) {
     return {
       setStorage: setLocalStorage,
@@ -120,10 +119,9 @@ const FormikSignUp = withFormik({
       .required("Password is required"),
     location: yup.string().required("Please enter a city or zip")
   }),
-  handleSubmit(values, { resetForm, setSubmitting, props }) {
-    console.log("SubmitValues", values);
+  handleSubmit(values, { props }) {
 
-    // Creating payload for login using axiosWithAuth
+    // Creating payload for new user using axiosWithAuth
     const newUser = {
       username: values.email,
       email: values.email,
@@ -132,7 +130,10 @@ const FormikSignUp = withFormik({
       location: values.location
     };
 
-    console.log("New User", newUser);
+    const credentials = {
+      username: values.email,
+      password: values.password
+    }
 
     if (
       values.remember === true &&
@@ -144,18 +145,29 @@ const FormikSignUp = withFormik({
       values.setStorage("passportPassword", values.password);
       console.log("SignUp storage", localStorage);
     }
-    setTimeout(() => {
-      axiosWithAuth()
-        .post("/auth/register", newUser)
-        .then(res => {
-          console.log(res);
-          setSubmitting(false);
-          props.props.history.push("/login");
-        })
-        .catch(err => console.log(err))
-        .finally(resetForm());
-    }, 1000);
+
+    // register using redux
+    props.register(newUser).then(() => {
+      props.login(credentials).then(() => {
+        props.props.history.push("/explore")
+      })
+    });
   }
 })(SignUp);
+
+const mapStateToProps = state => {
+  // console.log('state from redux', state)
+  return {
+    loggingIn: state.loggingIn
+  }
+};
+
+const FormikSignUp = connect(
+  mapStateToProps, 
+  {    
+    register,
+    login
+  }
+)(FormikSignUp1);
 
 export default FormikSignUp;
