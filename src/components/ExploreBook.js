@@ -20,7 +20,15 @@ function ExploreBook({ add, restaurants }) {
           <div>
             <h3>{restaurants[0].name}</h3>
             <br />
-            <p>Stamped: {restaurants[0].stamped ? "True" : "False"}</p>
+            <p>{restaurants[0].address}</p>
+            <p>
+              {restaurants[0].city}, {restaurants[0].state}{" "}
+              {restaurants[0].zipcode}
+            </p>
+            <p>{restaurants[0].phone_number}</p>
+            <p>
+              <a href={restaurants[0].website_url}>Website</a>
+            </p>
             <button onClick={() => add(restaurants[0])}>Add to Passport</button>
           </div>
         </div>
@@ -37,7 +45,15 @@ function ExploreBook({ add, restaurants }) {
           <div>
             <h3>{restaurants[1].name}</h3>
             <br />
-            <p>Stamped: {restaurants[1].stamped ? "True" : "False"}</p>
+            <p>{restaurants[1].address}</p>
+            <p>
+              {restaurants[1].city}, {restaurants[1].state}{" "}
+              {restaurants[1].zipcode}
+            </p>
+            <p>{restaurants[1].phone_number}</p>
+            <p>
+              <a href={restaurants[1].website_url}>Website</a>
+            </p>
             <button onClick={() => add(restaurants[1])}>Add to Passport</button>
           </div>
         </div>

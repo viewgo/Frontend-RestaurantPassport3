@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 //COMPONENTS
-import PassportBook from "./PassportBook";
+import ExploreBook from "./PassportBook";
 
 //STYLES
 import { PassportList, PassportItem } from "../styles/explore";
@@ -99,7 +99,7 @@ function Explore({ add }) {
 
       <PassportList>
         {localList.map(e => (
-          <PassportBook key={e.id} add={add} restaurants={e}></PassportBook>
+          <ExploreBook key={e.id} add={add} restaurants={e}></ExploreBook>
         ))}
       </PassportList>
     </>

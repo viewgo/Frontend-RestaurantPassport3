@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import Restaurant from "./Restaurant";
 import axiosWithAuth from "../utils/index";
 
+//COMPONENTS
+import PassportBook from "./PassportBook";
+
+//STYLES
+import { PassportList, PassportItem } from "../styles/explore";
+
 function Passport({ setFlipped, flipped }) {
   const [passportList, setList] = useState([]);
   const user_id = localStorage.getItem("user_id");
@@ -9,13 +15,24 @@ function Passport({ setFlipped, flipped }) {
     search: ""
   });
   const [search, setSearch] = useState(true);
+  const organizedList = [];
 
   useEffect(() => {
     axiosWithAuth()
       .get(`https://rpass.herokuapp.com/api/users/${user_id}/passport`)
       .then(res => {
         console.log("passport", res.data);
-        setList(res.data);
+
+        for (let i = 0; i < res.data.length; i += 2) {
+          organizedList.push([
+            res.data[i],
+            res.data[i + 1] ? res.data[i + 1] : null
+          ]);
+        }
+
+        console.log("Organized List: ", organizedList);
+
+        setList(organizedList);
       })
       .catch(err => console.log(err));
   }, [user_id, flipped, search]);
@@ -64,28 +81,11 @@ function Passport({ setFlipped, flipped }) {
 
   return (
     <>
-      <form onSubmit={onFormSubmit}>
-        <input
-          className="passport-search"
-          type="text"
-          placeholder="search"
-          name="search"
-          id="passportSearch"
-          onChange={onChangeHandler}
-          value={input.search}
-        />
-        <button type="submit">Search Passport</button>
-      </form>
-      <div className="passport-list">
+      <PassportList>
         {passportList.map(e => (
-          <Restaurant
-            restaurant={e}
-            setFlipped={setFlipped}
-            deleteRestaurant={deleteRestaurant}
-            flipped={flipped}
-          />
+          <PassportBook key={e.id} restaurants={e}></PassportBook>
         ))}
-      </div>
+      </PassportList>
     </>
   );
 }

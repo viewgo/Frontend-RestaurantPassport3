@@ -8,11 +8,17 @@ export const PassportList = styled.div`
 `;
 
 export const PassportItem = styled.div`
-  width: 49%;
+  width: 33%;
   height: 0;
-  padding-top: 32.8%;
+  padding-top: 22.125%;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1920px) {
+    width: 49%;
+    height: 0;
+    padding-top: 32.8%;
+  }
+
+  @media (max-width: 1000px) {
     width: 98%;
     height: 0;
     padding-top: 65.6%;
@@ -59,6 +65,12 @@ export const PassportItem = styled.div`
         margin: 0;
       }
 
+      @media (max-width: 600px) {
+        p {
+          display: none;
+        }
+      }
+
       div {
         width: 90%;
 
@@ -74,13 +86,20 @@ export const PassportItem = styled.div`
 
     .right-page {
     }
+
+    .img-container {
+      //   border: 1px solid red;
+      height: 50%;
+      width: 90%;
+    }
   }
 
   img {
+    // width: 200px;
+    // height: 150px;
+    width: auto;
+    max-height: 100%;
     object-fit: cover;
-    width: 200px;
-    height: 150px;
-
     // border: 1px solid #23253a;
     border-radius: 16px;
   }
