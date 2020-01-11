@@ -5,8 +5,6 @@ import * as yup from "yup";
 import axiosWithAuth from "../utils";
 
 function Login({ errors, touched, values, isSubmitting }) {
-  console.log("values", values);
-
   return (
     <Form>
       {/* <label name="email" className="login-label-email">
@@ -36,15 +34,7 @@ function Login({ errors, touched, values, isSubmitting }) {
         value={values.password || ""}
       />
       {/* </label> */}
-      <label name="remember" className="login-label-remember">
-        Remember:
-        <Field
-          className="login-field-remember field"
-          name="remember"
-          type="checkbox"
-          placeholder="false"
-        />
-      </label>
+
       <label name="submitButton" className="login-label-btn">
         <button
           name="submitBtn"
@@ -101,7 +91,7 @@ const FormikLogin = withFormik({
       password: values.password
     };
 
-    // console.log("credentials", credentials);
+    console.log("credentials", credentials);
 
     if (
       values.remember === true &&
@@ -132,9 +122,10 @@ const FormikLogin = withFormik({
       axiosWithAuth()
         .post("/auth/login", credentials)
         .then(res => {
-          // console.log("Login res", res);
+          console.log("Login res", res);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("user_id", res.data.user_id);
+          localStorage.setItem("user_location", res.data.user_location);
           setSubmitting(false);
           // console.log(props)
           props.props.history.push("/passport");
