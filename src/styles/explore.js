@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import passport from "../img/passport.jpg";
+import passport from "../img/book.jpg";
 
 export const PassportList = styled.div`
   display: flex;
@@ -79,12 +79,48 @@ export const PassportItem = styled.div`
         justify-content: center;
         align-items: center;
       }
+
+      .restaurant-categories {
+        font-style: italic;
+      }
+
+      .title {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow-x: hidden;
+      }
     }
 
     .left-page {
+      .explore-stamp {
+        width: 10%;
+        height: auto;
+        bottom: 24px;
+        left: 24px;
+        transform: rotate(-20deg);
+
+        position: absolute;
+
+        :hover {
+          cursor: pointer;
+        }
+      }
     }
 
     .right-page {
+      .explore-stamp {
+        width: 10%;
+        height: auto;
+        bottom: 24px;
+        right: 24px;
+        transform: rotate(20deg);
+
+        position: absolute;
+
+        :hover {
+          cursor: pointer;
+        }
+      }
     }
 
     .img-container {

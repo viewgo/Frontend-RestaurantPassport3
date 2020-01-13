@@ -21,24 +21,34 @@ function ExploreBook({ add, restaurants }) {
             <h3>{restaurants[0].name}</h3>
             <br />
             <p>Stamped: {restaurants[0].stamped ? "True" : "False"}</p>
+            <br />
             <button onClick={() => add(restaurants[0])}>Add to Passport</button>
           </div>
         </div>
 
         <div className="right-page">
           <div className="img-container">
-            <img
-              className="explore-img"
-              src={restaurants[1].img_url}
-              alt={restaurants[1].name}
-            />
+            {restaurants[1] ? (
+              <img
+                className="explore-img"
+                src={restaurants[1].img_url}
+                alt={restaurants[1].name}
+              />
+            ) : null}
           </div>
 
           <div>
-            <h3>{restaurants[1].name}</h3>
+            {restaurants[1] ? <h3>{restaurants[1].name}</h3> : null}
             <br />
-            <p>Stamped: {restaurants[1].stamped ? "True" : "False"}</p>
-            <button onClick={() => add(restaurants[1])}>Add to Passport</button>
+            {restaurants[1] ? (
+              <p>Stamped: {restaurants[1].stamped ? "True" : "False"}</p>
+            ) : null}
+            <br />
+            {restaurants[1] ? (
+              <button onClick={() => add(restaurants[1])}>
+                Add to Passport
+              </button>
+            ) : null}
           </div>
         </div>
       </div>

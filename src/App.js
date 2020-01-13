@@ -30,12 +30,10 @@ function App() {
   const flipPassport = e => {};
 
   const addToPassport = restaurant => {
-    console.log(`added to restaurant @ user_id: ${user_id}`, restaurant);
-
     const newRestaurant = {
       restaurant_id: restaurant.id
     };
-    alert(`You have added ${restaurant.name} to your passport`);
+
     axiosWithAuth()
       .post(
         `https://rpass.herokuapp.com/api/users/${user_id}/passport`,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 //COMPONENTS
-import ExploreBook from "./PassportBook";
+import ExploreBook from "./ExploreBook";
 
 //STYLES
 import { PassportList, PassportItem } from "../styles/explore";
