@@ -17,7 +17,6 @@ function Navigation(props) {
         <NavLink to="/passport">Passport</NavLink>
         <NavLink to="/explore">Explore</NavLink>
         <NavLink to="/login">Login</NavLink>
-        <NavLink to="/signup">Register</NavLink>
       </div>
     </Navbar>
   );

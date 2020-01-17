@@ -4,48 +4,52 @@ import * as yup from "yup";
 
 import axiosWithAuth from "../utils";
 
+import SignUpForm from "./SignUpForm";
+
 function Login({ errors, touched, values, isSubmitting }) {
   return (
-    <Form>
-      {/* <label name="email" className="login-label-email">
+    <>
+      <Form>
+        {/* <label name="email" className="login-label-email">
         {" "}
         {touched.email && errors.email && (
           <p className="error">{errors.email}</p>
         )}
         Email : */}
-      <Field
-        className="login-field-email field"
-        name="email"
-        placeholder="Email"
-        type="email"
-        value={values.email || ""}
-      />
-      {/* </label> */}
-      {/* <label name="password" className="login-label-password"> */}
-      {touched.password && errors.password && (
-        <p className="error">{errors.password}</p>
-      )}
-      {/* Password: */}
-      <Field
-        className="login-field-password field"
-        name="password"
-        placeholder="Password"
-        type="password"
-        value={values.password || ""}
-      />
-      {/* </label> */}
+        <Field
+          className="login-field-email field"
+          name="email"
+          placeholder="Email"
+          type="email"
+          value={values.email || ""}
+        />
+        {/* </label> */}
+        {/* <label name="password" className="login-label-password"> */}
+        {touched.password && errors.password && (
+          <p className="error">{errors.password}</p>
+        )}
+        {/* Password: */}
+        <Field
+          className="login-field-password field"
+          name="password"
+          placeholder="Password"
+          type="password"
+          value={values.password || ""}
+        />
+        {/* </label> */}
 
-      <label name="submitButton" className="login-label-btn">
-        <button
-          name="submitBtn"
-          type="submit"
-          disabled={isSubmitting}
-          className="login-submitBtn"
-        >
-          {!isSubmitting ? "Log In" : "Logging In"}
-        </button>
-      </label>
-    </Form>
+        <label name="submitButton" className="login-label-btn">
+          <button
+            name="submitBtn"
+            type="submit"
+            disabled={isSubmitting}
+            className="login-submitBtn"
+          >
+            {!isSubmitting ? "Log In" : "Logging In"}
+          </button>
+        </label>
+      </Form>
+    </>
   );
 }
 
@@ -127,8 +131,8 @@ const FormikLogin = withFormik({
           localStorage.setItem("user_id", res.data.user_id);
           localStorage.setItem("user_location", res.data.user_location);
           setSubmitting(false);
-          // console.log(props)
-          props.props.history.push("/passport");
+          console.log(props);
+          props.props.props.history.push("/passport");
         })
         .catch(res => console.log(res))
         .finally(resetForm());

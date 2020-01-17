@@ -10,6 +10,7 @@ import LoginForm from "./components/LoginForm";
 import PassportForm from "./components/PassportForm";
 import Passport from "./components/Passport";
 import Explore from "./components/Explore";
+import LoginRegister from "./components/LoginRegister";
 
 //STYLES
 import { Body } from "./styles/index.js";
@@ -52,6 +53,18 @@ function App() {
 
         <Route
           exact
+          path="/login"
+          render={props => (
+            <LoginRegister
+              props={props}
+              setLocalStorage={localStorageSet}
+              getLocalStorage={localStorageGet}
+            />
+          )}
+        />
+
+        {/* <Route
+          exact
           path="/signup"
           render={props => (
             <SignUpForm
@@ -72,7 +85,7 @@ function App() {
               getLocalStorage={localStorageGet}
             />
           )}
-        />
+        /> */}
 
         <Route path="/passport-form">
           <PassportForm />
