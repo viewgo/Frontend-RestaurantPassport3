@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import axiosWithAuth from "./utils";
 
 //COMPONENTS
@@ -53,7 +53,9 @@ function App() {
       <Navigation token={token} logout={logout} />
 
       <Body>
-        <Route path="/" />
+        <Route path="/">
+          {token ? <Redirect to="/explore" /> : <Redirect to="/login" />}
+        </Route>
 
         <Route
           exact

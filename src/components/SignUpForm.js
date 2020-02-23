@@ -71,7 +71,7 @@ function SignUp({ errors, touched, isSubmitting }) {
           type="text"
         />
         {/* </label> */}
-        <label name="rememberMe" className="signup-label-remember">
+        {/* <label name="rememberMe" className="signup-label-remember">
           Remember:
           <Field
             className="signup-field-remember field"
@@ -79,7 +79,7 @@ function SignUp({ errors, touched, isSubmitting }) {
             type="checkbox"
             placeholder="false"
           />
-        </label>
+        </label> */}
         <label name="submitButton" className="signup-label-btn ">
           <button
             name="submitBtn"
