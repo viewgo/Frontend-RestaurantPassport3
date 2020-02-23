@@ -5,7 +5,7 @@ import axios from "axios";
 import ExploreBook from "./ExploreBook";
 
 //STYLES
-import { PassportList, PassportItem } from "../styles/explore";
+import { PassportList } from "../styles/explore";
 
 function Explore({ add }) {
   const [localList, setLocalList] = useState([]);
@@ -14,8 +14,6 @@ function Explore({ add }) {
     location: ""
   });
   const [searchTest, setSearchTest] = useState(false);
-
-  const organizedList = [];
 
   const user_location = localStorage.getItem("user_location");
 
@@ -71,7 +69,7 @@ function Explore({ add }) {
         <input
           className="form-input"
           type="text"
-          placeholder="Search by food type"
+          placeholder="Keyword"
           name="search"
           id="search"
           onChange={onChangeHandler}
@@ -83,7 +81,7 @@ function Explore({ add }) {
         <input
           className="form-location"
           type="text"
-          placeholder="Search by location"
+          placeholder="Location"
           name="location"
           id="location"
           onChange={onChangeHandler}
@@ -91,7 +89,7 @@ function Explore({ add }) {
         />
         {/* </label> */}
         <button type="submit" className="form-btn">
-          Search Type/Location
+          Explore
         </button>
       </form>
 

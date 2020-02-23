@@ -4,12 +4,10 @@ import * as yup from "yup";
 
 import axiosWithAuth from "../utils";
 
-import SignUpForm from "./SignUpForm";
-
 function Login({ errors, touched, values, isSubmitting }) {
   return (
     <>
-      <Form>
+      <Form className="login-form">
         {/* <label name="email" className="login-label-email">
         {" "}
         {touched.email && errors.email && (
@@ -43,7 +41,7 @@ function Login({ errors, touched, values, isSubmitting }) {
             name="submitBtn"
             type="submit"
             disabled={isSubmitting}
-            className="login-submitBtn"
+            className="login-submitBtn form-btn"
           >
             {!isSubmitting ? "Log In" : "Logging In"}
           </button>
@@ -132,6 +130,7 @@ const FormikLogin = withFormik({
           localStorage.setItem("user_location", res.data.user_location);
           setSubmitting(false);
           console.log(props);
+          props.setToken(res.data.token);
           props.props.props.history.push("/passport");
         })
         .catch(res => console.log(res))

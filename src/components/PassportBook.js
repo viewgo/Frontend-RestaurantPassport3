@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 
 //STYLES
-import { PassportList, PassportItem } from "../styles/explore";
+import { PassportItem } from "../styles/explore";
 
 function ExploreBook({ add, restaurants }) {
   return (

@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import axiosWithAuth from "./utils";
 
 //COMPONENTS
 import PrivateRoute from "./components/PrivateRoute";
 import Navigation from "./components/Navigation";
-import SignUpForm from "./components/SignUpForm";
-import LoginForm from "./components/LoginForm";
 import PassportForm from "./components/PassportForm";
 import Passport from "./components/Passport";
 import Explore from "./components/Explore";
@@ -17,6 +15,7 @@ import { Body } from "./styles/index.js";
 
 function App() {
   const [flipped, setFlipped] = useState();
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const user_id = localStorage.getItem("user_id");
 
@@ -44,9 +43,14 @@ function App() {
       .catch(err => console.log(err));
   };
 
+  const logout = e => {
+    localStorage.clear();
+    window.location.pathname = "/login";
+  };
+
   return (
     <div className="App">
-      <Navigation />
+      <Navigation token={token} logout={logout} />
 
       <Body>
         <Route path="/" />
@@ -57,6 +61,7 @@ function App() {
           render={props => (
             <LoginRegister
               props={props}
+              setToken={setToken}
               setLocalStorage={localStorageSet}
               getLocalStorage={localStorageGet}
             />

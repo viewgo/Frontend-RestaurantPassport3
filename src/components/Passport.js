@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Restaurant from "./Restaurant";
+
 import axiosWithAuth from "../utils/index";
 
 //COMPONENTS
 import PassportBook from "./PassportBook";
 
 //STYLES
-import { PassportList, PassportItem } from "../styles/explore";
+import { PassportList } from "../styles/explore";
 
 function Passport({ setFlipped, flipped }) {
   const [passportList, setList] = useState([]);
@@ -49,34 +49,6 @@ function Passport({ setFlipped, flipped }) {
       .catch(err => {
         console.log(err.message);
       });
-  };
-
-  const onFormSubmit = evt => {
-    evt.preventDefault();
-    console.log("passportList", passportList, "search", input.search);
-    input.search === ""
-      ? setSearch(!search)
-      : setList(
-          passportList.filter(e => {
-            const values = Object.values(e);
-            console.log("values", values);
-            // return values.forEach(e =>
-            //   JSON.stringify(e)
-            //     .toLowerCase()
-            //     .includes(input.search.trim())
-            // );
-            return e.name.toLowerCase().includes(input.search.trim());
-          })
-        );
-    setInput({
-      search: ""
-    });
-  };
-  const onChangeHandler = e => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value.toLowerCase()
-    });
   };
 
   return (

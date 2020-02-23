@@ -8,8 +8,8 @@ function SignUp({ errors, touched, isSubmitting }) {
   // const {} = values;
   // console.log(errors);
   return (
-    <div className="signup-form">
-      <Form>
+    <div>
+      <Form className="signup-form">
         {touched.firstName && errors.firstName && (
           <p className="error">{errors.firstName}</p>
         )}
@@ -80,12 +80,12 @@ function SignUp({ errors, touched, isSubmitting }) {
             placeholder="false"
           />
         </label>
-        <label name="submitButton" className="signup-label-btn">
+        <label name="submitButton" className="signup-label-btn ">
           <button
             name="submitBtn"
             type="submit"
             disabled={isSubmitting}
-            className="signup-submitBtn"
+            className="signup-submitBtn form-btn"
           >
             {!isSubmitting ? "Sign Up" : "Processing"}
           </button>

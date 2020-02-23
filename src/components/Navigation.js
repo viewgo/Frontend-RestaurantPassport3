@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { Navbar } from "../styles/navbar.js";
@@ -16,7 +16,13 @@ function Navigation(props) {
       <div>
         <NavLink to="/passport">Passport</NavLink>
         <NavLink to="/explore">Explore</NavLink>
-        <NavLink to="/login">Login</NavLink>
+        {props.token ? (
+          <NavLink to="/" onClick={e => props.logout(e)}>
+            Logout
+          </NavLink>
+        ) : (
+          <NavLink to="/login">Login</NavLink>
+        )}
       </div>
     </Navbar>
   );
